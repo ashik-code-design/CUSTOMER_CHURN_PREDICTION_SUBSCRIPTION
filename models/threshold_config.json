@@ -1,0 +1,7 @@
+{
+    "threshold": 0.25,
+    "false_positive_cost": 10.0,
+    "false_negative_cost": 100.0,
+    "threshold_selection": "validation set",
+    "costs_are_illustrative": true
+}
