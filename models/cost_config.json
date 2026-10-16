@@ -1,0 +1,6 @@
+{
+    "false_positive_cost": 50.0,
+    "false_negative_cost": 837.9,
+    "false_negative_basis": "12 x average monthly charge",
+    "costs_are_illustrative": true
+}

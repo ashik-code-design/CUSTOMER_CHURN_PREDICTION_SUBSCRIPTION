@@ -1,0 +1,13 @@
+{
+    "model_name": "Logistic Regression",
+    "model_kind": "linear",
+    "model_file": "best_model.pkl",
+    "preprocessor_file": "best_preprocessor.pkl",
+    "threshold": 0.25,
+    "engineered_features": true,
+    "selected_by": "lowest validation cost, then validation PR-AUC",
+    "validation_cost": 5237.9,
+    "false_positive_cost": 50.0,
+    "false_negative_cost": 837.9,
+    "costs_are_illustrative": true
+}

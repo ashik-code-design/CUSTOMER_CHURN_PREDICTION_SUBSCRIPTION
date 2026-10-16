@@ -1,4 +1,5 @@
 import os
+import sys
 import json
 
 import joblib
@@ -10,6 +11,14 @@ import pandas as pd
 import streamlit as st
 
 import plotly.express as px
+
+# Shared feature engineering + risk-tier rules (src/churn_features.py)
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "src"))
+from churn_features import (  # noqa: E402
+    REQUIRED_COLUMNS,
+    assign_risk_tier,
+    prepare_features,
+)
 
 
 # ============================================================
@@ -154,27 +163,13 @@ df = load_data()
 # LOAD MODEL
 # ============================================================
 
-@st.cache_resource
-def load_model():
-
-    if not os.path.exists(MODEL_FILE):
-        return None
-
-    return joblib.load(MODEL_FILE)
-
-
-@st.cache_resource
-def load_preprocessor():
-
-    if not os.path.exists(PREPROCESSOR_FILE):
-        return None
-
-    return joblib.load(PREPROCESSOR_FILE)
+BEST_CONFIG_FILE = os.path.join(MODEL_DIR, "best_model_config.json")
+COST_CONFIG_FILE = os.path.join(MODEL_DIR, "cost_config.json")
 
 
 @st.cache_data
 def load_prediction_threshold():
-    """Load the tuned threshold, falling back to 0.50 if unavailable."""
+    """Fallback threshold from threshold_config.json (0.50 if unavailable)."""
     if not os.path.exists(THRESHOLD_CONFIG_FILE):
         return 0.50
 
@@ -190,9 +185,117 @@ def load_prediction_threshold():
         return 0.50
 
 
-model = load_model()
-preprocessor = load_preprocessor()
-prediction_threshold = load_prediction_threshold()
+@st.cache_resource
+def load_scoring_artifacts():
+    """Return (model, preprocessor, threshold, info).
+
+    Uses the best model exported by `python src/compare_models.py`
+    (best_model.pkl + best_preprocessor.pkl + best_model_config.json), so the
+    model, its preprocessing and its tuned threshold always match. If those
+    files do not exist, falls back to the original Logistic Regression files.
+    """
+    if os.path.exists(BEST_CONFIG_FILE):
+        try:
+            with open(BEST_CONFIG_FILE, "r", encoding="utf-8") as config_file:
+                config = json.load(config_file)
+
+            best_model = joblib.load(
+                os.path.join(MODEL_DIR, config["model_file"])
+            )
+            best_preprocessor = joblib.load(
+                os.path.join(MODEL_DIR, config["preprocessor_file"])
+            )
+
+            threshold_value = float(config.get("threshold", 0.50))
+            if not 0.0 <= threshold_value <= 1.0:
+                threshold_value = 0.50
+
+            info = {
+                "name": config.get("model_name", "Best model"),
+                "kind": config.get("model_kind", "tree"),
+                "engineered": bool(config.get("engineered_features", False)),
+            }
+            return best_model, best_preprocessor, threshold_value, info
+
+        except (OSError, KeyError, ValueError, json.JSONDecodeError):
+            pass
+
+    fallback_model = (
+        joblib.load(MODEL_FILE) if os.path.exists(MODEL_FILE) else None
+    )
+    fallback_preprocessor = (
+        joblib.load(PREPROCESSOR_FILE)
+        if os.path.exists(PREPROCESSOR_FILE) else None
+    )
+    info = {"name": "Logistic Regression", "kind": "linear", "engineered": False}
+    return (
+        fallback_model,
+        fallback_preprocessor,
+        load_prediction_threshold(),
+        info,
+    )
+
+
+model, preprocessor, prediction_threshold, model_info = load_scoring_artifacts()
+
+
+# ------------------------------------------------------------
+# Scoring and explanation helpers
+# ------------------------------------------------------------
+
+def score_frame(raw_df):
+    """Apply the same feature engineering used in training, then preprocess."""
+    prepared = prepare_features(raw_df, engineered=model_info["engineered"])
+    return preprocessor.transform(prepared)
+
+
+def to_dense(matrix):
+    return matrix.toarray() if hasattr(matrix, "toarray") else np.asarray(matrix)
+
+
+def clean_feature_name(name):
+    return str(name).split("__", 1)[-1]
+
+
+@st.cache_resource
+def get_shap_explainer(_model, _preprocessor, kind, engineered):
+    """Build a SHAP explainer once. Linear models need a real background
+    sample (a single row as background would give all-zero SHAP values)."""
+    import shap
+
+    if kind == "linear":
+        sample = df[REQUIRED_COLUMNS].sample(
+            min(100, len(df)), random_state=42
+        )
+        background = to_dense(
+            _preprocessor.transform(
+                prepare_features(sample, engineered=engineered)
+            )
+        )
+        return shap.LinearExplainer(_model, background)
+
+    return shap.TreeExplainer(_model)
+
+
+def compute_shap_matrix(transformed):
+    explainer = get_shap_explainer(
+        model, preprocessor, model_info["kind"], model_info["engineered"]
+    )
+    values = np.asarray(explainer(to_dense(transformed)).values)
+    if values.ndim == 3:  # some tree models return one slice per class
+        values = values[:, :, 1]
+    return values
+
+
+def top_churn_reasons(shap_matrix, feature_names, k=3):
+    """Top k features pushing each customer TOWARD churn."""
+    names = [clean_feature_name(n) for n in feature_names]
+    reasons = []
+    for row in shap_matrix:
+        order = np.argsort(row)[::-1][:k]
+        picked = [names[i] for i in order if row[i] > 0]
+        reasons.append("; ".join(picked) if picked else "No strong churn drivers")
+    return reasons
 
 
 # ============================================================
@@ -375,7 +478,7 @@ if page == "📊 Business Dashboard":
 
         fig.update_layout(height=430)
 
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     # --------------------------------------------------------
     # CONTRACT ANALYSIS
@@ -424,7 +527,7 @@ if page == "📊 Business Dashboard":
             height=430
         )
 
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     # --------------------------------------------------------
     # INTERNET SERVICE
@@ -470,7 +573,7 @@ if page == "📊 Business Dashboard":
             height=400
         )
 
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
 
@@ -493,7 +596,7 @@ if page == "📊 Business Dashboard":
             height=400
         )
 
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     # --------------------------------------------------------
     # MONTHLY CHARGES VS CHURN
@@ -527,7 +630,7 @@ if page == "📊 Business Dashboard":
         height=450
     )
 
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     # --------------------------------------------------------
     # SATISFACTION VS CHURN
@@ -555,7 +658,7 @@ if page == "📊 Business Dashboard":
             height=400
         )
 
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     # --------------------------------------------------------
     # TENURE VS CHURN
@@ -581,7 +684,7 @@ if page == "📊 Business Dashboard":
             height=400
         )
 
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     # --------------------------------------------------------
     # SUPPORT TICKETS
@@ -609,7 +712,7 @@ if page == "📊 Business Dashboard":
             height=400
         )
 
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     # --------------------------------------------------------
     # LOGIN ACTIVITY
@@ -635,7 +738,7 @@ if page == "📊 Business Dashboard":
             height=400
         )
 
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     # --------------------------------------------------------
     # BUSINESS INSIGHTS
@@ -755,7 +858,7 @@ be useful indicators for retention campaigns.
 
         st.dataframe(
             df,
-            use_container_width=True,
+            width="stretch",
             height=400
         )
 
@@ -895,7 +998,7 @@ elif page == "🔮 Churn Prediction":
     if st.button(
         "🔮 Predict Churn",
         type="primary",
-        use_container_width=True
+        width="stretch"
     ):
 
         input_data = pd.DataFrame([{
@@ -919,7 +1022,7 @@ elif page == "🔮 Churn Prediction":
 
         try:
 
-            transformed = preprocessor.transform(input_data)
+            transformed = score_frame(input_data)
 
             probability = model.predict_proba(transformed)[0][1]
 
@@ -927,26 +1030,32 @@ elif page == "🔮 Churn Prediction":
 
             st.markdown("---")
 
-            if probability < 0.30:
+            risk = str(assign_risk_tier(probability, prediction_threshold))
 
-                risk = "LOW"
+            if risk == "LOW":
+
                 st.success(
                     f"🟢 Low Churn Risk — {probability * 100:.2f}%"
                 )
 
-            elif probability < 0.60:
+            elif risk == "MEDIUM":
 
-                risk = "MEDIUM"
                 st.warning(
                     f"🟡 Medium Churn Risk — {probability * 100:.2f}%"
                 )
 
             else:
 
-                risk = "HIGH"
                 st.error(
                     f"🔴 High Churn Risk — {probability * 100:.2f}%"
                 )
+
+            st.caption(
+                f"Scored with {model_info['name']} · decision threshold "
+                f"{prediction_threshold:.2f} (tuned on validation data). "
+                "HIGH = at or above the threshold, MEDIUM = at or above half "
+                "of it, LOW = below."
+            )
 
             col1, col2, col3 = st.columns(3)
 
@@ -973,18 +1082,12 @@ elif page == "🔮 Churn Prediction":
 
             try:
 
-                import shap
+                values = compute_shap_matrix(transformed)[0]
 
-                explainer = shap.LinearExplainer(
-                    model,
-                    transformed
-                )
-
-                shap_values = explainer(transformed)
-
-                values = shap_values.values[0]
-
-                feature_names = preprocessor.get_feature_names_out()
+                feature_names = [
+                    clean_feature_name(n)
+                    for n in preprocessor.get_feature_names_out()
+                ]
 
                 explanation_df = pd.DataFrame({
                     "Feature": feature_names,
@@ -1011,7 +1114,12 @@ elif page == "🔮 Churn Prediction":
 
                 fig.update_layout(height=500)
 
-                st.plotly_chart(fig, use_container_width=True)
+                st.plotly_chart(fig, width="stretch")
+
+                st.caption(
+                    "Positive values push this customer toward churn; "
+                    "negative values push toward staying."
+                )
 
             except Exception as e:
 
@@ -1062,7 +1170,7 @@ elif page == "📂 Batch Prediction":
 
             st.dataframe(
                 batch_df.head(),
-                use_container_width=True
+                width="stretch"
             )
 
             required_columns = [
@@ -1103,7 +1211,7 @@ elif page == "📂 Batch Prediction":
                     type="primary"
                 ):
 
-                    transformed = preprocessor.transform(
+                    transformed = score_frame(
                         batch_df[required_columns]
                     )
 
@@ -1125,17 +1233,36 @@ elif page == "📂 Batch Prediction":
                         "No Churn"
                     )
 
-                    result_df["risk_level"] = pd.cut(
+                    result_df["risk_level"] = assign_risk_tier(
                         probabilities,
-                        bins=[-0.01, 0.30, 0.60, 1.01],
-                        labels=["LOW", "MEDIUM", "HIGH"]
+                        prediction_threshold
                     )
+
+                    try:
+
+                        with st.spinner("Computing top churn reasons..."):
+
+                            shap_matrix = compute_shap_matrix(transformed)
+
+                            result_df["top_3_churn_reasons"] = (
+                                top_churn_reasons(
+                                    shap_matrix,
+                                    preprocessor.get_feature_names_out()
+                                )
+                            )
+
+                    except Exception as e:
+
+                        st.info(
+                            "Top churn reasons could not be generated: "
+                            f"{e}"
+                        )
 
                     st.success("Predictions generated successfully.")
 
                     st.dataframe(
                         result_df,
-                        use_container_width=True,
+                        width="stretch",
                         height=500
                     )
 
@@ -1162,6 +1289,10 @@ elif page == "📈 Model Analysis":
     st.caption(
         "Compare models on the held-out test set. Tuned thresholds were selected "
         "using validation data; financial costs shown here are illustrative."
+    )
+    st.caption(
+        f"Model used for predictions in this app: **{model_info['name']}** "
+        f"(decision threshold {prediction_threshold:.2f})."
     )
 
     tuned_file = os.path.join(MODEL_DIR, "model_comparison.csv")
@@ -1206,7 +1337,7 @@ elif page == "📈 Model Analysis":
                     styled = styled.format({c: "{:.3f}" for c in percent_cols})
                 if "Illustrative Cost" in display_columns:
                     styled = styled.format({"Illustrative Cost": "${:,.0f}"})
-                st.dataframe(styled, use_container_width=True, hide_index=True)
+                st.dataframe(styled, width="stretch", hide_index=True)
 
                 metric_options = [c for c in ["Accuracy", "Precision", "Recall", "F1 Score", "ROC-AUC", "PR-AUC"] if c in comparison_df.columns]
                 if metric_options:
@@ -1222,7 +1353,7 @@ elif page == "📈 Model Analysis":
                     )
                     fig.update_traces(texttemplate="%{text:.3f}", textposition="outside", cliponaxis=False)
                     fig.update_layout(height=330, margin=dict(l=15, r=55, t=65, b=25), xaxis=dict(range=[0, 1.08], title=selected_metric), yaxis_title="")
-                    st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
+                    st.plotly_chart(fig, width="stretch", config={"displayModeBar": False})
 
                 if all(c in comparison_df.columns for c in ["FP", "FN", "Model"]):
                     st.subheader("Classification errors on the test set")
@@ -1230,12 +1361,24 @@ elif page == "📈 Model Analysis":
                     fig = px.bar(error_df, x="Model", y="Customers", color="Error type", barmode="group", text="Customers")
                     fig.update_traces(textposition="outside", cliponaxis=False)
                     fig.update_layout(height=340, margin=dict(l=15, r=15, t=35, b=25), legend_title_text="")
-                    st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
+                    st.plotly_chart(fig, width="stretch", config={"displayModeBar": False})
 
                 if "Illustrative Cost" in comparison_df.columns:
+                    fp_cost, fn_cost = 10.0, 100.0
+                    cost_note = ""
+                    if os.path.exists(COST_CONFIG_FILE):
+                        try:
+                            with open(COST_CONFIG_FILE, "r", encoding="utf-8") as cost_file:
+                                cost_cfg = json.load(cost_file)
+                            fp_cost = float(cost_cfg.get("false_positive_cost", fp_cost))
+                            fn_cost = float(cost_cfg.get("false_negative_cost", fn_cost))
+                            cost_note = f" (false-negative cost basis: {cost_cfg.get('false_negative_basis', 'assumed')})"
+                        except (OSError, ValueError, json.JSONDecodeError):
+                            pass
                     st.info(
-                        "Demo cost = false positives × 10 + false negatives × 100. These are illustrative assumptions, "
-                        "not actual business losses or guaranteed savings. Choose thresholds using validated business costs."
+                        f"Demo cost = false positives × ${fp_cost:,.2f} + false negatives × ${fn_cost:,.2f}{cost_note}. "
+                        "These are illustrative assumptions, not actual business losses or guaranteed savings. "
+                        "Replace them with validated business costs before relying on the thresholds."
                     )
 
             with standard_tab:
@@ -1247,18 +1390,37 @@ elif page == "📈 Model Analysis":
                         "Model", "Threshold", "Accuracy", "Precision", "Recall", "F1 Score",
                         "ROC-AUC", "PR-AUC", "TN", "FP", "FN", "TP", "Illustrative Cost"
                     ] if c in standard_df.columns]
-                    st.dataframe(standard_df[standard_display], use_container_width=True, hide_index=True)
+                    st.dataframe(standard_df[standard_display], width="stretch", hide_index=True)
                     if all(c in standard_df.columns for c in ["Model", "Recall", "Precision", "F1 Score"]):
                         metric = st.selectbox("Metric to visualize", [c for c in ["Recall", "Precision", "F1 Score", "Accuracy", "ROC-AUC", "PR-AUC"] if c in standard_df.columns], key="standard_metric_select")
                         chart_df = standard_df.sort_values(metric, ascending=True)
                         fig = px.bar(chart_df, x=metric, y="Model", orientation="h", text=metric, title=f"{metric} — threshold 0.50")
                         fig.update_traces(texttemplate="%{text:.3f}", textposition="outside", cliponaxis=False)
                         fig.update_layout(height=320, margin=dict(l=15, r=55, t=60, b=25), xaxis=dict(range=[0, 1.08]), yaxis_title="")
-                        st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
+                        st.plotly_chart(fig, width="stretch", config={"displayModeBar": False})
                 else:
                     st.warning("models/model_comparison_at_050.csv was not found. Run python src/compare_models.py.")
     else:
         st.warning("models/model_comparison.csv was not found. Run python src/compare_models.py from the project folder.")
+
+    # Cross-validation results (threshold-independent ranking metrics)
+    cv_file = os.path.join(MODEL_DIR, "cross_validation_results.csv")
+    if os.path.exists(cv_file):
+        st.markdown("---")
+        st.subheader("🔁 Cross-validation")
+        st.caption(
+            "Stratified k-fold cross-validation on the training + validation rows "
+            "(the test set is not used). Mean ± standard deviation across folds; "
+            "a small standard deviation means the result is stable."
+        )
+        cv_df = pd.read_csv(cv_file)
+        st.dataframe(
+            cv_df.style.format({
+                "ROC-AUC Mean": "{:.3f}", "ROC-AUC Std": "{:.3f}",
+                "PR-AUC Mean": "{:.3f}", "PR-AUC Std": "{:.3f}",
+            }),
+            width="stretch", hide_index=True
+        )
 
     # SHAP explainability: two compact global views and one larger local view.
     st.markdown("---")
@@ -1279,7 +1441,7 @@ elif page == "📈 Model Analysis":
             path = shap_paths[title]
             st.markdown(f"**{title}**")
             if os.path.exists(path):
-                st.image(path, use_container_width=True)
+                st.image(path, width="stretch")
             else:
                 st.caption("Plot not found. Run src/shap_analysis.py to generate it.")
 
@@ -1287,7 +1449,7 @@ elif page == "📈 Model Analysis":
     if os.path.exists(local_path):
         with st.expander("🔎 View local customer explanation", expanded=False):
             st.caption("A local explanation shows which features influenced one selected example prediction.")
-            st.image(local_path, use_container_width=True)
+            st.image(local_path, width="stretch")
     else:
         st.caption("Local customer explanation not found. Run src/shap_analysis.py to generate it.")
 
@@ -1323,11 +1485,11 @@ elif page == "📈 Customer Survival":
 
         st.subheader("Customer Cohort Analysis")
 
-        st.dataframe(cohort_df, use_container_width=True)
+        st.dataframe(cohort_df, width="stretch")
 
     if os.path.exists(cohort_image):
 
-        st.image(cohort_image, use_container_width=True)
+        st.image(cohort_image, width="stretch")
 
     # --------------------------------------------------------
     # KAPLAN MEIER
@@ -1337,7 +1499,7 @@ elif page == "📈 Customer Survival":
 
     if os.path.exists(km_image):
 
-        st.image(km_image, use_container_width=True)
+        st.image(km_image, width="stretch")
 
     if os.path.exists(km_file):
 
@@ -1345,7 +1507,7 @@ elif page == "📈 Customer Survival":
 
         st.subheader("Customer Survival Probability")
 
-        st.dataframe(km_df, use_container_width=True)
+        st.dataframe(km_df, width="stretch")
 
         if (
             "timeline" in km_df.columns
@@ -1367,7 +1529,7 @@ elif page == "📈 Customer Survival":
                 height=450
             )
 
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width="stretch")
 
     st.info(
         "Note: the current synthetic dataset uses tenure as the "
@@ -1440,7 +1602,7 @@ elif page == "🎯 Risk Segmentation":
             title="Customer Risk Distribution"
         )
 
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
 
@@ -1454,7 +1616,7 @@ elif page == "🎯 Risk Segmentation":
 
         fig.update_traces(textposition="outside")
 
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     # --------------------------------------------------------
     # RISK CHARACTERISTICS
@@ -1473,7 +1635,7 @@ elif page == "🎯 Risk Segmentation":
         .reset_index()
     )
 
-    st.dataframe(characteristics, use_container_width=True)
+    st.dataframe(characteristics, width="stretch")
 
     # --------------------------------------------------------
     # HIGH RISK CUSTOMERS
@@ -1487,7 +1649,7 @@ elif page == "🎯 Risk Segmentation":
         .head(20)
     )
 
-    st.dataframe(high_risk, use_container_width=True)
+    st.dataframe(high_risk, width="stretch")
 
     # --------------------------------------------------------
     # DOWNLOAD
@@ -1613,7 +1775,7 @@ elif page == "💰 Retention Priority":
             title="Retention Priority Distribution"
         )
 
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
 
@@ -1637,7 +1799,7 @@ elif page == "💰 Retention Priority":
             textposition="outside"
         )
 
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     # --------------------------------------------------------
     # TOP CUSTOMERS
@@ -1651,7 +1813,7 @@ elif page == "💰 Retention Priority":
         .head(20)
     )
 
-    st.dataframe(top_customers, use_container_width=True)
+    st.dataframe(top_customers, width="stretch")
 
     # --------------------------------------------------------
     # FILTER
@@ -1669,7 +1831,7 @@ elif page == "💰 Retention Priority":
 
     st.dataframe(
         filtered_df,
-        use_container_width=True,
+        width="stretch",
         height=450
     )
 
@@ -1789,23 +1951,65 @@ elif page == "ℹ️ About Project":
     - Lifelines
     - Joblib
 
-    ### ⚠️ Risk Thresholds
+    ### ⚠️ Risk Tiers
 
-    The demonstration application uses:
+    The decision threshold is tuned on validation data using the
+    cost assumptions in `models/cost_config.json`. Risk tiers use
+    the same threshold, so a customer labelled "Churn" is always HIGH:
 
-    - Below 30% → LOW
-    - 30%–60% → MEDIUM
-    - Above 60% → HIGH
+    - Probability ≥ threshold → HIGH
+    - Probability ≥ half of the threshold → MEDIUM
+    - Below that → LOW
 
-    These thresholds are demonstration values. A production system
-    should determine thresholds using business costs, retention
-    campaign effectiveness, and expected financial value.
+    The costs are illustrative. A production system should determine
+    them from real retention-offer costs, campaign effectiveness and
+    a full customer lifetime value model.
 
     ### 📌 Dataset
 
     The current project uses a synthetic customer churn dataset
     containing customer demographics, billing information, service
     usage, support interactions, satisfaction, and churn status.
+
+    ### 🧱 Deployment & MLOps Design (designed, not implemented)
+
+    ```
+    CRM / Billing / Product events
+              │  nightly ETL (Apache Airflow)
+              ▼
+    Feature store → batch scoring job ← model registry (MLflow)
+              │
+              ▼
+    Data warehouse: user_id, churn_probability, risk_tier,
+                    top_3_churn_reasons
+              │  reverse ETL (Hightouch / Census)
+              ▼
+    Salesforce · Zendesk · Marketo · email / SMS campaigns
+    ```
+
+    - **Implemented here:** feature engineering, model comparison with
+      cross-validation, cost-based threshold tuning, SHAP explanations,
+      batch scoring with top churn reasons (CSV export).
+    - **Designed only:** scheduled pipelines, model registry, warehouse
+      and CRM sync, automated drift monitoring (retrain when PR-AUC falls
+      below an agreed floor or feature distributions shift).
+
+    ### ⚠️ Limitations
+
+    - The dataset is synthetic and a single snapshot: there are no
+      time-based (7-day vs 30-day) velocity features and no
+      payment-failure data, so involuntary churn is not modelled.
+    - Engineered features are single-snapshot proxies
+      (e.g. tickets per login), not true behavioural trends.
+    - Retention costs and customer value are illustrative assumptions.
+    - Kaplan-Meier uses tenure as duration and churn as the event.
+
+    ### 🔭 Future Scope: Uplift Modeling
+
+    Standard churn models can target "sleeping dogs" (customers who
+    would stay if left alone). Uplift modeling on A/B retention-campaign
+    data would separate Persuadables, Sure Things, Lost Causes and
+    Sleeping Dogs so offers go only to customers they actually help.
     """)
 
     st.markdown("---")
@@ -1830,9 +2034,15 @@ customer-churn-prediction/
 │   ├── random_forest_preprocessor.pkl
 │   ├── xgboost.pkl
 │   ├── xgboost_preprocessor.pkl
+│   ├── best_model.pkl
+│   ├── best_preprocessor.pkl
+│   ├── best_model_config.json
+│   ├── cost_config.json
+│   ├── cross_validation_results.csv
 │   └── model_comparison.csv
 │
 ├── src/
+│   ├── churn_features.py
 │   ├── preprocess.py
 │   ├── train_logistic_regression.py
 │   ├── train_random_forest.py
