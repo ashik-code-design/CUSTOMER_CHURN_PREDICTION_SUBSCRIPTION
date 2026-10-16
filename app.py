@@ -11,6 +11,7 @@ import pandas as pd
 import streamlit as st
 
 import plotly.express as px
+import plotly.graph_objects as go
 
 # Shared feature engineering + risk-tier rules (src/churn_features.py)
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "src"))
@@ -1491,6 +1492,80 @@ elif page == "📈 Customer Survival":
 
         st.image(cohort_image, width="stretch")
 
+    # Heatmap: tenure cohort x contract type (src/survival_analysis.py)
+    heatmap_file = os.path.join(DATA_DIR, "cohort_heatmap.csv")
+
+    if os.path.exists(heatmap_file):
+
+        heat_df = pd.read_csv(heatmap_file)
+
+        st.subheader("Churn Rate Heatmap: Tenure Cohort × Contract Type")
+
+        cohort_order = list(dict.fromkeys(heat_df["tenure_cohort"]))
+
+        shown_rate = heat_df["churn_rate"].where(heat_df["reliable"])
+
+        rate_matrix = (
+            heat_df.assign(shown=shown_rate)
+            .pivot(index="tenure_cohort", columns="contract_type", values="shown")
+            .reindex(cohort_order)
+        )
+
+        count_matrix = (
+            heat_df.pivot(
+                index="tenure_cohort",
+                columns="contract_type",
+                values="customers"
+            )
+            .reindex(cohort_order)
+            .reindex(columns=rate_matrix.columns)
+        )
+
+        label_matrix = [
+            [
+                f"{rate:.1f}%<br>n={int(n)}"
+                if pd.notna(rate) else f"n={int(n)}<br>too few"
+                for rate, n in zip(rate_row, n_row)
+            ]
+            for rate_row, n_row in zip(
+                rate_matrix.to_numpy(), count_matrix.to_numpy()
+            )
+        ]
+
+        fig = go.Figure(
+            go.Heatmap(
+                z=rate_matrix.to_numpy(),
+                x=list(rate_matrix.columns),
+                y=list(rate_matrix.index),
+                text=label_matrix,
+                texttemplate="%{text}",
+                colorscale="YlOrRd",
+                zmin=0,
+                zmax=100,
+                colorbar=dict(title="Churn Rate (%)"),
+                hovertemplate=(
+                    "Cohort: %{y}<br>Contract: %{x}<br>"
+                    "Churn rate: %{z:.1f}%<extra></extra>"
+                )
+            )
+        )
+
+        fig.update_layout(
+            xaxis_title="Contract Type",
+            yaxis_title="Tenure Cohort",
+            yaxis=dict(autorange="reversed"),
+            height=450
+        )
+
+        st.plotly_chart(fig, width="stretch")
+
+        st.caption(
+            "Cells with very few customers are left blank because their "
+            "churn rates would be unreliable. The dataset has no signup "
+            "date, so tenure cohorts are used instead of acquisition-month "
+            "cohorts."
+        )
+
     # --------------------------------------------------------
     # KAPLAN MEIER
     # --------------------------------------------------------
@@ -1509,14 +1584,21 @@ elif page == "📈 Customer Survival":
 
         st.dataframe(km_df, width="stretch")
 
+        # The analysis script saves the x column as "tenure_months";
+        # older exports used "timeline". Accept either.
+        km_x_column = next(
+            (c for c in ["tenure_months", "timeline"] if c in km_df.columns),
+            None
+        )
+
         if (
-            "timeline" in km_df.columns
+            km_x_column is not None
             and "survival_probability" in km_df.columns
         ):
 
             fig = px.line(
                 km_df,
-                x="timeline",
+                x=km_x_column,
                 y="survival_probability",
                 markers=True,
                 title="Survival Probability Over Tenure"
