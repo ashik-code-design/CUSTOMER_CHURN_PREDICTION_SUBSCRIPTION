@@ -100,3 +100,40 @@ def assign_risk_tier(probability, threshold):
         "HIGH",
         np.where(probability >= threshold / 2.0, "MEDIUM", "LOW"),
     )
+
+
+# ----------------------------------------------------------------------
+# Probability calibration
+# ----------------------------------------------------------------------
+# Class weighting (class_weight="balanced", scale_pos_weight) makes models
+# over-predict churn probabilities. A Platt (sigmoid) calibrator fitted on
+# the validation set maps the raw scores back to realistic probabilities.
+# The wrapper lives in THIS module so saved model files can always be loaded
+# by app.py and the scripts (they all import churn_features first).
+
+def logit_clip(probability):
+    probability = np.clip(np.asarray(probability, dtype=float), 1e-6, 1 - 1e-6)
+    return np.log(probability / (1 - probability))
+
+
+class CalibratedChurnModel:
+    """A fitted classifier plus a Platt calibrator, behaving like one model.
+
+    predict_proba() returns CALIBRATED probabilities. The untouched
+    classifier is available as .base_model (used for SHAP explanations).
+    """
+
+    def __init__(self, base_model, calibrator):
+        self.base_model = base_model
+        self.calibrator = calibrator
+        self.classes_ = np.array([0, 1])
+
+    def predict_proba(self, X):
+        raw = self.base_model.predict_proba(X)[:, 1]
+        calibrated = self.calibrator.predict_proba(
+            logit_clip(raw).reshape(-1, 1)
+        )[:, 1]
+        return np.column_stack([1.0 - calibrated, calibrated])
+
+    def predict(self, X, threshold=0.5):
+        return (self.predict_proba(X)[:, 1] >= threshold).astype(int)

@@ -17,6 +17,7 @@ import plotly.graph_objects as go
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "src"))
 from churn_features import (  # noqa: E402
     REQUIRED_COLUMNS,
+    CalibratedChurnModel,  # noqa: F401  (needed to load calibrated models)
     assign_risk_tier,
     prepare_features,
 )
@@ -215,6 +216,7 @@ def load_scoring_artifacts():
                 "name": config.get("model_name", "Best model"),
                 "kind": config.get("model_kind", "tree"),
                 "engineered": bool(config.get("engineered_features", False)),
+                "calibrated": bool(config.get("probabilities_calibrated", False)),
             }
             return best_model, best_preprocessor, threshold_value, info
 
@@ -228,7 +230,8 @@ def load_scoring_artifacts():
         joblib.load(PREPROCESSOR_FILE)
         if os.path.exists(PREPROCESSOR_FILE) else None
     )
-    info = {"name": "Logistic Regression", "kind": "linear", "engineered": False}
+    info = {"name": "Logistic Regression", "kind": "linear",
+            "engineered": False, "calibrated": False}
     return (
         fallback_model,
         fallback_preprocessor,
@@ -280,7 +283,10 @@ def get_shap_explainer(_model, _preprocessor, kind, engineered):
 
 def compute_shap_matrix(transformed):
     explainer = get_shap_explainer(
-        model, preprocessor, model_info["kind"], model_info["engineered"]
+        getattr(model, "base_model", model),
+        preprocessor,
+        model_info["kind"],
+        model_info["engineered"]
     )
     values = np.asarray(explainer(to_dense(transformed)).values)
     if values.ndim == 3:  # some tree models return one slice per class
@@ -1056,6 +1062,7 @@ elif page == "🔮 Churn Prediction":
                 f"{prediction_threshold:.2f} (tuned on validation data). "
                 "HIGH = at or above the threshold, MEDIUM = at or above half "
                 "of it, LOW = below."
+                + (" Probabilities are calibrated." if model_info.get("calibrated") else "")
             )
 
             col1, col2, col3 = st.columns(3)
@@ -1365,22 +1372,36 @@ elif page == "📈 Model Analysis":
                     st.plotly_chart(fig, width="stretch", config={"displayModeBar": False})
 
                 if "Illustrative Cost" in comparison_df.columns:
-                    fp_cost, fn_cost = 10.0, 100.0
-                    cost_note = ""
+                    cost_message = (
+                        "Demo cost = false positives × $10 + false negatives × $100. "
+                        "These are illustrative assumptions, not actual business losses "
+                        "or guaranteed savings."
+                    )
                     if os.path.exists(COST_CONFIG_FILE):
                         try:
                             with open(COST_CONFIG_FILE, "r", encoding="utf-8") as cost_file:
                                 cost_cfg = json.load(cost_file)
-                            fp_cost = float(cost_cfg.get("false_positive_cost", fp_cost))
-                            fn_cost = float(cost_cfg.get("false_negative_cost", fn_cost))
-                            cost_note = f" (false-negative cost basis: {cost_cfg.get('false_negative_basis', 'assumed')})"
-                        except (OSError, ValueError, json.JSONDecodeError):
+                            if "offer_cost" in cost_cfg:
+                                offer = float(cost_cfg["offer_cost"])
+                                value = float(cost_cfg["customer_value"])
+                                save = float(cost_cfg["assumed_save_rate"])
+                                cost_message = (
+                                    f"Illustrative cost = ${offer:,.0f} offer cost for every customer contacted "
+                                    f"+ the customer value (${value:,.2f}) lost for every churner who leaves "
+                                    f"(all missed churners, and {1 - save:.0%} of contacted churners, "
+                                    f"assuming the offer saves {save:.0%}). "
+                                    "These are illustrative assumptions, not actual business losses "
+                                    "or guaranteed savings."
+                                )
+                                if "test_cost_contact_nobody" in cost_cfg:
+                                    cost_message += (
+                                        f" For reference, on the test set: contacting nobody costs "
+                                        f"${cost_cfg['test_cost_contact_nobody']:,.0f} and contacting "
+                                        f"everyone costs ${cost_cfg['test_cost_contact_everyone']:,.0f}."
+                                    )
+                        except (OSError, ValueError, KeyError, json.JSONDecodeError):
                             pass
-                    st.info(
-                        f"Demo cost = false positives × ${fp_cost:,.2f} + false negatives × ${fn_cost:,.2f}{cost_note}. "
-                        "These are illustrative assumptions, not actual business losses or guaranteed savings. "
-                        "Replace them with validated business costs before relying on the thresholds."
-                    )
+                    st.info(cost_message + " Replace them with validated business costs before relying on the thresholds.")
 
             with standard_tab:
                 if os.path.exists(standard_file):
@@ -1419,6 +1440,26 @@ elif page == "📈 Model Analysis":
             cv_df.style.format({
                 "ROC-AUC Mean": "{:.3f}", "ROC-AUC Std": "{:.3f}",
                 "PR-AUC Mean": "{:.3f}", "PR-AUC Std": "{:.3f}",
+            }),
+            width="stretch", hide_index=True
+        )
+
+    # Calibration check: are predicted probabilities realistic?
+    calibration_file = os.path.join(MODEL_DIR, "calibration_check.csv")
+    if os.path.exists(calibration_file):
+        st.markdown("---")
+        st.subheader("🎚️ Probability calibration")
+        st.caption(
+            "Class weighting inflates raw churn probabilities. A sigmoid (Platt) "
+            "calibrator fitted on the validation set maps them back to realistic "
+            "values. On the test set, the calibrated mean prediction should be "
+            "close to the actual churn rate, and the Brier score (lower is better) "
+            "should not get worse."
+        )
+        calibration_df = pd.read_csv(calibration_file)
+        st.dataframe(
+            calibration_df.style.format({
+                c: "{:.3f}" for c in calibration_df.columns if c != "Model"
             }),
             width="stretch", hide_index=True
         )

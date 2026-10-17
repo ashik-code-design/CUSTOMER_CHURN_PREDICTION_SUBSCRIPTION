@@ -5,9 +5,13 @@
     "preprocessor_file": "best_preprocessor.pkl",
     "threshold": 0.25,
     "engineered_features": true,
-    "selected_by": "lowest validation cost, then validation PR-AUC",
-    "validation_cost": 5237.9,
-    "false_positive_cost": 50.0,
-    "false_negative_cost": 837.9,
+    "probabilities_calibrated": true,
+    "calibration_method": "Platt sigmoid fitted on the validation set",
+    "selected_by": "highest cross-validated PR-AUC; threshold tuned on validation cost",
+    "validation_cost": 41468.97,
+    "offer_cost": 50.0,
+    "customer_value": 837.9,
+    "customer_value_basis": "12 x average monthly charge",
+    "assumed_save_rate": 0.3,
     "costs_are_illustrative": true
 }

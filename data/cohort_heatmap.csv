@@ -1,0 +1,19 @@
+tenure_cohort,contract_type,customers,churned,churn_rate,reliable
+0-6 Months,Monthly,44,20,45.45454545454545,True
+0-6 Months,One year,21,6,28.57142857142857,True
+0-6 Months,Two year,20,7,35.0,True
+7-12 Months,Monthly,51,27,52.94117647058824,True
+7-12 Months,One year,22,7,31.818181818181817,True
+7-12 Months,Two year,19,4,21.052631578947366,True
+13-24 Months,Monthly,103,33,32.038834951456316,True
+13-24 Months,One year,47,7,14.893617021276595,True
+13-24 Months,Two year,33,6,18.181818181818183,True
+25-36 Months,Monthly,95,47,49.473684210526315,True
+25-36 Months,One year,42,9,21.428571428571427,True
+25-36 Months,Two year,38,6,15.789473684210526,True
+37-60 Months,Monthly,180,59,32.77777777777778,True
+37-60 Months,One year,69,10,14.492753623188406,True
+37-60 Months,Two year,67,15,22.388059701492537,True
+60+ Months,Monthly,86,24,27.906976744186046,True
+60+ Months,One year,41,5,12.195121951219512,True
+60+ Months,Two year,22,3,13.636363636363635,True

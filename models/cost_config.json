@@ -1,6 +1,9 @@
 {
-    "false_positive_cost": 50.0,
-    "false_negative_cost": 837.9,
-    "false_negative_basis": "12 x average monthly charge",
-    "costs_are_illustrative": true
+    "offer_cost": 50.0,
+    "customer_value": 837.9,
+    "customer_value_basis": "12 x average monthly charge",
+    "assumed_save_rate": 0.3,
+    "costs_are_illustrative": true,
+    "test_cost_contact_nobody": 49436.1,
+    "test_cost_contact_everyone": 44605.27
 }

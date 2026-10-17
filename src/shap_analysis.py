@@ -70,6 +70,9 @@ model, preprocessor, threshold, model_name, model_kind, engineered = (
     load_scoring_artifacts()
 )
 
+# SHAP explains the underlying classifier (not the calibration wrapper)
+base_model = getattr(model, "base_model", model)
+
 print(f"Model: {model_name} ({model_kind}) | threshold: {threshold:.2f} | "
       f"engineered features: {engineered}")
 
@@ -118,9 +121,9 @@ X_background = to_dense(
 # ============================================================
 
 if model_kind == "linear":
-    explainer = shap.LinearExplainer(model, X_background)
+    explainer = shap.LinearExplainer(base_model, X_background)
 else:
-    explainer = shap.TreeExplainer(model)
+    explainer = shap.TreeExplainer(base_model)
 
 raw = explainer(X_test_dense)
 

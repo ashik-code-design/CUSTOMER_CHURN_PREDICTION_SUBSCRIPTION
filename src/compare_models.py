@@ -3,12 +3,15 @@ python src/compare_models.py
 
 - Same stratified 60/20/20 train/validation/test split for every model.
 - 5-fold stratified cross-validation on the train+validation rows.
+- Probabilities are CALIBRATED (Platt sigmoid fitted on the validation set),
+  because class weighting inflates raw churn probabilities.
 - Thresholds are chosen on validation data only; final metrics use test data.
-- The model that the Streamlit app serves is chosen on VALIDATION cost
-  (never on the test set), then saved together with its own preprocessor
-  and threshold so all three always match.
-- Business costs are illustrative assumptions (see COST SETTINGS), not
-  measured financial results.
+- The model the Streamlit app serves is the one with the highest
+  cross-validated PR-AUC (a stable ranking measure that the project brief
+  prioritises); its threshold is then tuned on validation cost. The test set
+  is never used for selection. The model is saved with its calibrator,
+  preprocessor and threshold.
+- Business costs are illustrative assumptions (see COST SETTINGS).
 """
 import json
 import sys
@@ -23,8 +26,8 @@ from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import (
-    accuracy_score, average_precision_score, confusion_matrix, f1_score,
-    precision_score, recall_score, roc_auc_score,
+    accuracy_score, average_precision_score, brier_score_loss,
+    confusion_matrix, f1_score, precision_score, recall_score, roc_auc_score,
 )
 from sklearn.model_selection import StratifiedKFold, cross_validate, train_test_split
 from sklearn.pipeline import Pipeline
@@ -33,7 +36,8 @@ from xgboost import XGBClassifier
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from churn_features import (  # noqa: E402
-    CATEGORICAL_COLUMNS, USE_ENGINEERED_FEATURES, prepare_features,
+    CATEGORICAL_COLUMNS, USE_ENGINEERED_FEATURES, CalibratedChurnModel,
+    logit_clip, prepare_features,
 )
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -42,8 +46,10 @@ OUT_DIR = ROOT / "models"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # ---------------- COST SETTINGS (edit with real business numbers) -------
-FP_COST = 50.0          # PDF example: $50 retention discount given needlessly
-CLV_MONTHS = 12         # assumed months of revenue lost when a churner is missed
+OFFER_COST = 50.0       # PDF example: $50 retention discount, paid for every
+                        # customer who is contacted
+CLV_MONTHS = 12         # assumed months of revenue lost when a churner leaves
+SAVE_RATE = 0.30        # ASSUMED share of contacted churners the offer retains
 THRESHOLDS = np.round(np.arange(0.05, 0.951, 0.05), 2)
 RANDOM_STATE = 42
 CV_FOLDS = 5
@@ -53,7 +59,7 @@ df = pd.read_csv(DATA_FILE).dropna(subset=["churn"]).copy()
 if not {"customer_id", "churn"}.issubset(df.columns):
     raise ValueError("Dataset must contain customer_id and churn columns.")
 
-FN_COST = round(float(df["monthly_charges"].mean()) * CLV_MONTHS, 2)
+CUSTOMER_VALUE = round(float(df["monthly_charges"].mean()) * CLV_MONTHS, 2)
 
 X = prepare_features(
     df.drop(columns=["customer_id", "churn"]),
@@ -79,8 +85,11 @@ print(f"Dataset: {df.shape}; train={len(X_train)}, "
       f"validation={len(X_val)}, test={len(X_test)}")
 print("Churn distribution:", y.value_counts().sort_index().to_dict())
 print(f"Engineered features used: {USE_ENGINEERED_FEATURES}")
-print(f"Costs: false positive=${FP_COST:,.2f}, "
-      f"false negative=${FN_COST:,.2f} ({CLV_MONTHS} x avg monthly charge)")
+print(f"Cost model: offer=${OFFER_COST:,.2f} per customer contacted, "
+      f"customer value=${CUSTOMER_VALUE:,.2f} ({CLV_MONTHS} x avg monthly "
+      f"charge), assumed save rate={SAVE_RATE:.0%}")
+print(f"Break-even probability for contacting a customer: "
+      f"{OFFER_COST / (SAVE_RATE * CUSTOMER_VALUE):.3f}")
 
 # 3. Preprocessors (fit on training data only)
 def make_preprocessor(scale: bool):
@@ -110,9 +119,22 @@ model_specs = [
                    random_state=RANDOM_STATE, n_jobs=-1), False, "xgboost"),
 ]
 
+def total_cost(tn, fp, fn, tp):
+    """Expected cost relative to a world where every churner is lost.
+
+    - contacted non-churner (FP): the offer cost
+    - contacted churner (TP): the offer cost + (1 - save rate) x value lost
+    - missed churner (FN): the full customer value lost
+    """
+    return (
+        fp * OFFER_COST
+        + tp * (OFFER_COST + (1 - SAVE_RATE) * CUSTOMER_VALUE)
+        + fn * CUSTOMER_VALUE
+    )
+
 def cost_and_counts(y_true, pred):
     tn, fp, fn, tp = confusion_matrix(y_true, pred, labels=[0, 1]).ravel()
-    return FP_COST * fp + FN_COST * fn, int(tn), int(fp), int(fn), int(tp)
+    return total_cost(tn, fp, fn, tp), int(tn), int(fp), int(fn), int(tp)
 
 def make_row(name, y_true, prob, threshold):
     pred = (prob >= threshold).astype(int)
@@ -155,8 +177,9 @@ for name, estimator, scale, _slug in model_specs:
 cv_df = pd.DataFrame(cv_rows)
 cv_df.to_csv(OUT_DIR / "cross_validation_results.csv", index=False)
 
-# 5. Train on the 60% training rows, tune threshold on validation, test once
-tuned_rows, default_rows, threshold_rows, candidates = [], [], [], []
+# 5. Train, CALIBRATE on validation, tune threshold on validation, test once
+tuned_rows, default_rows, threshold_rows = [], [], []
+candidates, calibration_rows = [], []
 for name, estimator, scale, slug in model_specs:
     print(f"Training {name}...")
     pre = make_preprocessor(scale)
@@ -164,10 +187,28 @@ for name, estimator, scale, slug in model_specs:
     Xv = pre.transform(X_val)
     Xte = pre.transform(X_test)
 
-    model = clone(estimator)
-    model.fit(Xtr, y_train)
+    base_model = clone(estimator)
+    base_model.fit(Xtr, y_train)
+
+    # Platt scaling: a 2-parameter logistic fit on the validation scores.
+    # (Low capacity, so it is safe with a few hundred validation rows.)
+    raw_val = base_model.predict_proba(Xv)[:, 1]
+    raw_test = base_model.predict_proba(Xte)[:, 1]
+    calibrator = LogisticRegression(C=1e6, max_iter=1000)
+    calibrator.fit(logit_clip(raw_val).reshape(-1, 1), y_val)
+    model = CalibratedChurnModel(base_model, calibrator)
+
     val_prob = model.predict_proba(Xv)[:, 1]
     test_prob = model.predict_proba(Xte)[:, 1]
+
+    calibration_rows.append({
+        "Model": name,
+        "Actual Churn Rate (test)": float(y_test.mean()),
+        "Mean Predicted - Raw": float(raw_test.mean()),
+        "Mean Predicted - Calibrated": float(test_prob.mean()),
+        "Brier - Raw": float(brier_score_loss(y_test, raw_test)),
+        "Brier - Calibrated": float(brier_score_loss(y_test, test_prob)),
+    })
 
     # Threshold chosen with validation labels only. Tie-break toward 0.50.
     scored = []
@@ -191,6 +232,7 @@ for name, estimator, scale, slug in model_specs:
 tuned = pd.DataFrame(tuned_rows)
 default = pd.DataFrame(default_rows)
 audit = pd.DataFrame(threshold_rows)
+calibration_df = pd.DataFrame(calibration_rows)
 
 tuned_path = OUT_DIR / "model_comparison.csv"
 default_path = OUT_DIR / "model_comparison_at_050.csv"
@@ -198,11 +240,33 @@ audit_path = OUT_DIR / "threshold_comparison_all_models.csv"
 tuned.to_csv(tuned_path, index=False)
 default.to_csv(default_path, index=False)
 audit.to_csv(audit_path, index=False)
+calibration_df.to_csv(OUT_DIR / "calibration_check.csv", index=False)
 
-# 6. Pick the model the app will serve: lowest VALIDATION cost, then PR-AUC
-best = min(candidates, key=lambda c: (c["val_cost"], -c["val_pr_auc"]))
+# Reference strategies on the test set (no model involved)
+n_test = len(y_test)
+n_churn_test = int(y_test.sum())
+cost_contact_nobody = n_churn_test * CUSTOMER_VALUE
+cost_contact_everyone = (
+    n_test * OFFER_COST + n_churn_test * (1 - SAVE_RATE) * CUSTOMER_VALUE
+)
+
+# 6. Pick the model the app will serve: highest cross-validated PR-AUC
+#    (more stable than a single 200-row validation split), then lowest
+#    validation cost as a tie-break.
+cv_pr_auc = dict(zip(cv_df["Model"], cv_df["PR-AUC Mean"]))
+best = max(
+    candidates,
+    key=lambda c: (round(cv_pr_auc[c["name"]], 4), -c["val_cost"]),
+)
 joblib.dump(best["model"], OUT_DIR / "best_model.pkl")
 joblib.dump(best["pre"], OUT_DIR / "best_preprocessor.pkl")
+cost_settings = {
+    "offer_cost": OFFER_COST,
+    "customer_value": CUSTOMER_VALUE,
+    "customer_value_basis": f"{CLV_MONTHS} x average monthly charge",
+    "assumed_save_rate": SAVE_RATE,
+    "costs_are_illustrative": True,
+}
 with open(OUT_DIR / "best_model_config.json", "w", encoding="utf-8") as f:
     json.dump({
         "model_name": best["name"],
@@ -211,18 +275,17 @@ with open(OUT_DIR / "best_model_config.json", "w", encoding="utf-8") as f:
         "preprocessor_file": "best_preprocessor.pkl",
         "threshold": best["threshold"],
         "engineered_features": bool(USE_ENGINEERED_FEATURES),
-        "selected_by": "lowest validation cost, then validation PR-AUC",
+        "probabilities_calibrated": True,
+        "calibration_method": "Platt sigmoid fitted on the validation set",
+        "selected_by": "highest cross-validated PR-AUC; threshold tuned on validation cost",
         "validation_cost": best["val_cost"],
-        "false_positive_cost": FP_COST,
-        "false_negative_cost": FN_COST,
-        "costs_are_illustrative": True,
+        **cost_settings,
     }, f, indent=4)
 with open(OUT_DIR / "cost_config.json", "w", encoding="utf-8") as f:
     json.dump({
-        "false_positive_cost": FP_COST,
-        "false_negative_cost": FN_COST,
-        "false_negative_basis": f"{CLV_MONTHS} x average monthly charge",
-        "costs_are_illustrative": True,
+        **cost_settings,
+        "test_cost_contact_nobody": cost_contact_nobody,
+        "test_cost_contact_everyone": cost_contact_everyone,
     }, f, indent=4)
 
 cols = ["Model", "Threshold", "Accuracy", "Precision", "Recall",
@@ -230,15 +293,25 @@ cols = ["Model", "Threshold", "Accuracy", "Precision", "Recall",
         "Illustrative Cost"]
 print("\nCROSS-VALIDATION (train+validation rows)")
 print(cv_df.to_string(index=False, float_format=lambda x: f"{x:.4f}"))
+print("\nCALIBRATION CHECK (test set): mean predicted churn vs actual rate")
+print(calibration_df.to_string(index=False, float_format=lambda x: f"{x:.4f}"))
 print("\nMODEL COMPARISON - VALIDATION-TUNED THRESHOLDS, HELD-OUT TEST SET")
 print(tuned[cols].to_string(index=False, float_format=lambda x: f"{x:.4f}"))
 print("\nMODEL COMPARISON - COMMON THRESHOLD 0.50, HELD-OUT TEST SET")
 print(default[cols].to_string(index=False, float_format=lambda x: f"{x:.4f}"))
+print("\nREFERENCE STRATEGIES ON THE TEST SET (same cost model)")
+print(f"Contact nobody   : ${cost_contact_nobody:,.2f}")
+print(f"Contact everyone : ${cost_contact_everyone:,.2f}")
+for row in tuned_rows:
+    saving = cost_contact_nobody - row["Illustrative Cost"]
+    print(f"{row['Model']:<20}: ${row['Illustrative Cost']:,.2f} "
+          f"(saves ${saving:,.2f} vs contacting nobody)")
 print(f"\nModel served by the app: {best['name']} "
-      f"(threshold {best['threshold']:.2f}, chosen on validation data)")
+      f"(highest cross-validated PR-AUC; threshold {best['threshold']:.2f} "
+      f"tuned on validation cost)")
 print("\nSaved in models/: model_comparison.csv, model_comparison_at_050.csv, "
       "threshold_comparison_all_models.csv, cross_validation_results.csv, "
-      "cost_config.json, best_model.pkl, best_preprocessor.pkl, "
-      "best_model_config.json")
-print("Note: costs are illustrative. Existing logistic_regression.pkl / "
-      "threshold_config.json are NOT overwritten.")
+      "calibration_check.csv, cost_config.json, best_model.pkl, "
+      "best_preprocessor.pkl, best_model_config.json")
+print("Note: costs and save rate are illustrative assumptions. Existing "
+      "logistic_regression.pkl / threshold_config.json are NOT overwritten.")
