@@ -1401,7 +1401,10 @@ elif page == "📈 Model Analysis":
                                     )
                         except (OSError, ValueError, KeyError, json.JSONDecodeError):
                             pass
-                    st.info(cost_message + " Replace them with validated business costs before relying on the thresholds.")
+                    st.info(
+                        (cost_message + " Replace them with validated business costs before relying on the thresholds.")
+                        .replace("$", r"\$")
+                    )
 
             with standard_tab:
                 if os.path.exists(standard_file):
@@ -1865,13 +1868,13 @@ elif page == "💰 Retention Priority":
     with col3:
         st.metric(
             "Estimated Customer Value",
-            f"${estimated_value:,.2f}"
+            f"${estimated_value:,.0f}"
         )
 
     with col4:
         st.metric(
             "Expected Revenue at Risk",
-            f"${revenue_at_risk:,.2f}"
+            f"${revenue_at_risk:,.0f}"
         )
 
     # --------------------------------------------------------
