@@ -109,16 +109,16 @@ df["retention_priority"] = df.apply(classify_priority, axis=1)
 def recommended_action(priority):
 
     if priority == "CRITICAL":
-        return "Immediate personalized retention intervention"
+        return "White-glove: immediate call from a senior CSM, tailored with churn reasons"
 
     elif priority == "HIGH":
-        return "Priority retention campaign"
+        return "Priority retention campaign with a personalized offer"
 
     elif priority == "MEDIUM-HIGH":
-        return "Targeted retention campaign"
+        return "Targeted retention campaign by the Customer Success team"
 
     elif priority == "MEDIUM":
-        return "Monitor and engage customer"
+        return "Automated email drip campaign with an optional 15% discount"
 
     else:
         return "Normal customer engagement"

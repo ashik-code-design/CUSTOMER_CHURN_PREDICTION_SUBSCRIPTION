@@ -1329,6 +1329,45 @@ elif page == "📈 Model Analysis":
                 best = comparison_df.loc[comparison_df["Illustrative Cost"].idxmin()]
                 k4.metric("Lowest Demo Cost", str(best["Model"]), f'${best["Illustrative Cost"]:,.0f}')
 
+            with st.expander("ℹ️ Why accuracy is misleading for churn"):
+
+                churn_share = float(df["churn"].mean())
+                baseline_accuracy = 1 - churn_share
+
+                accuracy_text = (
+                    f"Only {churn_share:.1%} of customers churn. A 'dumb' model "
+                    f"that always predicts 'No churn' would be "
+                    f"{baseline_accuracy:.1%} accurate while finding 0% of the "
+                    "customers who actually leave, so it would be useless for "
+                    "retention."
+                )
+
+                served_rows = comparison_df[
+                    comparison_df["Model"] == model_info["name"]
+                ]
+
+                if (
+                    not served_rows.empty
+                    and {"Accuracy", "Recall"}.issubset(served_rows.columns)
+                ):
+                    served_row = served_rows.iloc[0]
+                    accuracy_text += (
+                        f" The model used by this app ({model_info['name']}), "
+                        f"at its tuned threshold, has {served_row['Accuracy']:.1%} "
+                        f"accuracy but {served_row['Recall']:.1%} recall: it "
+                        "finds that share of the real churners."
+                    )
+
+                st.markdown(accuracy_text)
+
+                st.markdown(
+                    "Judge churn models by **Recall** (how many churners are "
+                    "found), **Precision** (how many offers are not wasted on "
+                    "loyal customers), and **ROC-AUC / PR-AUC** (how well "
+                    "customers are ranked). PR-AUC is especially useful "
+                    "because it is sensitive to the minority class."
+                )
+
             st.markdown("---")
             tuned_tab, standard_tab = st.tabs(["🎯 Tuned thresholds", "⚖️ Common 0.50 threshold"])
 
@@ -1657,6 +1696,86 @@ elif page == "📈 Customer Survival":
 
             st.plotly_chart(fig, width="stretch")
 
+    if os.path.exists(km_file):
+
+        km_reading = pd.read_csv(km_file)
+
+        km_axis = next(
+            (c for c in ["tenure_months", "timeline"] if c in km_reading.columns),
+            None
+        )
+
+        if km_axis is not None and "survival_probability" in km_reading.columns:
+
+            km_curve = km_reading.sort_values(km_axis)
+
+            def survival_at(month):
+                earlier = km_curve[km_curve[km_axis] <= month]
+                if earlier.empty:
+                    return 1.0
+                return float(earlier["survival_probability"].iloc[-1])
+
+            max_month = km_curve[km_axis].max()
+
+            checkpoints = [m for m in [0, 6, 12, 24, 36, 48, 60] if m <= max_month]
+
+            window_rows = []
+
+            for start_month, end_month in zip(checkpoints[:-1], checkpoints[1:]):
+
+                points_lost = (
+                    survival_at(start_month) - survival_at(end_month)
+                ) * 100
+
+                window_rows.append({
+                    "Tenure window (months)": f"{start_month}-{end_month}",
+                    "Survival at start": survival_at(start_month),
+                    "Survival at end": survival_at(end_month),
+                    "Points lost": points_lost,
+                    "Points lost per month": points_lost / (end_month - start_month),
+                })
+
+            if window_rows:
+
+                st.subheader("How to read the survival curve")
+
+                window_df = pd.DataFrame(window_rows)
+
+                st.dataframe(
+                    window_df.style.format({
+                        "Survival at start": "{:.1%}",
+                        "Survival at end": "{:.1%}",
+                        "Points lost": "{:.1f}",
+                        "Points lost per month": "{:.2f}",
+                    }),
+                    width="stretch",
+                    hide_index=True
+                )
+
+                steepest = window_df.loc[window_df["Points lost per month"].idxmax()]
+
+                below_half = km_curve[km_curve["survival_probability"] <= 0.5]
+
+                median_text = (
+                    f"The median survival time is about "
+                    f"{below_half[km_axis].iloc[0]:.0f} months (half of customers "
+                    "have left by then)."
+                    if not below_half.empty
+                    else "Fewer than half of customers have left within the "
+                    "observed tenure range, so a median survival time is not "
+                    "reached."
+                )
+
+                st.markdown(
+                    f"The steepest decline is in months "
+                    f"**{steepest['Tenure window (months)']}**: survival falls "
+                    f"from {steepest['Survival at start']:.1%} to "
+                    f"{steepest['Survival at end']:.1%}, about "
+                    f"{steepest['Points lost per month']:.2f} percentage points "
+                    f"per month. {median_text} Retention outreach is best "
+                    "scheduled shortly before the steepest window opens."
+                )
+
     st.info(
         "Note: the current synthetic dataset uses tenure as the "
         "duration variable and churn as the event indicator. "
@@ -1764,6 +1883,108 @@ elif page == "🎯 Risk Segmentation":
     st.dataframe(characteristics, width="stretch")
 
     # --------------------------------------------------------
+    # RISK DECILES
+    # --------------------------------------------------------
+
+    st.subheader("📊 Risk Deciles")
+
+    st.caption(
+        "Customers ranked by churn probability and split into 10 equal groups. "
+        "Decile 1 is the highest-risk 10% of customers (the 'top 10%' tier in "
+        "the project brief). These customers were also used to train the "
+        "model, so the actual-churn comparison looks somewhat better than it "
+        "would for brand-new customers."
+    )
+
+    decile_df = risk_df.copy()
+
+    decile_df["risk_decile"] = np.ceil(
+        decile_df["churn_probability"].rank(ascending=False, method="first")
+        / len(decile_df)
+        * 10
+    ).astype(int)
+
+    decile_aggregations = {
+        "customers": ("customer_id", "count"),
+        "avg_churn_probability": ("churn_probability", "mean"),
+        "avg_monthly_charges": ("monthly_charges", "mean"),
+    }
+
+    if "churn" in decile_df.columns:
+        decile_aggregations["actual_churn_rate"] = ("churn", "mean")
+
+    decile_summary = (
+        decile_df.groupby("risk_decile")
+        .agg(**decile_aggregations)
+        .reset_index()
+    )
+
+    decile_summary["avg_churn_probability"] *= 100
+
+    if "actual_churn_rate" in decile_summary.columns:
+        decile_summary["actual_churn_rate"] *= 100
+
+    decile_formats = {
+        "customers": "{:,.0f}",
+        "avg_churn_probability": "{:.1f}%",
+        "avg_monthly_charges": "{:.2f}",
+        "actual_churn_rate": "{:.1f}%",
+    }
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+
+        st.dataframe(
+            decile_summary.style.format(
+                {
+                    column: fmt
+                    for column, fmt in decile_formats.items()
+                    if column in decile_summary.columns
+                }
+            ),
+            width="stretch",
+            hide_index=True
+        )
+
+    with col2:
+
+        chart_columns = [
+            c for c in ["avg_churn_probability", "actual_churn_rate"]
+            if c in decile_summary.columns
+        ]
+
+        decile_chart_df = decile_summary.melt(
+            id_vars="risk_decile",
+            value_vars=chart_columns,
+            var_name="Measure",
+            value_name="Percent"
+        )
+
+        decile_chart_df["Measure"] = decile_chart_df["Measure"].map({
+            "avg_churn_probability": "Average predicted churn (%)",
+            "actual_churn_rate": "Actual churn rate (%)",
+        })
+
+        fig = px.bar(
+            decile_chart_df,
+            x="risk_decile",
+            y="Percent",
+            color="Measure",
+            barmode="group",
+            title="Churn by Risk Decile (1 = highest risk)"
+        )
+
+        fig.update_layout(
+            xaxis_title="Risk decile",
+            yaxis_title="Percent",
+            xaxis=dict(dtick=1),
+            height=400
+        )
+
+        st.plotly_chart(fig, width="stretch")
+
+    # --------------------------------------------------------
     # HIGH RISK CUSTOMERS
     # --------------------------------------------------------
 
@@ -1799,16 +2020,16 @@ elif page == "🎯 Risk Segmentation":
     st.markdown("""
     **🔴 HIGH RISK**
 
-    - Proactive retention intervention
-    - Personalized customer support
+    - Proactive intervention: CRM alert and a personal call from a senior Customer Success Manager
+    - Use the SHAP churn reasons to tailor the conversation
     - Review billing/service issues
-    - Consider targeted retention offers
+    - Consider a targeted retention offer for high-value accounts
 
     **🟡 MEDIUM RISK**
 
-    - Targeted retention campaigns
-    - Monitor customer engagement
-    - Improve satisfaction
+    - Automated email drip campaign (targeted content, webinars)
+    - Optional dynamic 15% discount on the next billing cycle
+    - Monitor customer engagement and improve satisfaction
 
     **🟢 LOW RISK**
 
@@ -1942,6 +2163,75 @@ elif page == "💰 Retention Priority":
     st.dataframe(top_customers, width="stretch")
 
     # --------------------------------------------------------
+    # WHITE-GLOVE AND AUTOMATED TIERS (project brief, section 9)
+    # --------------------------------------------------------
+
+    st.subheader("🥇 White-Glove Tier and 🤖 Automated Tier")
+
+    risk_cutoff = priority_df["churn_probability"].quantile(0.90)
+    value_cutoff = priority_df["estimated_customer_value"].median()
+
+    white_glove = priority_df[
+        (priority_df["churn_probability"] >= risk_cutoff)
+        & (priority_df["estimated_customer_value"] >= value_cutoff)
+    ]
+
+    automated_tier = priority_df[
+        (priority_df["risk_level"] == "MEDIUM")
+        & (priority_df["estimated_customer_value"] < value_cutoff)
+    ]
+
+    col1, col2, col3, col4 = st.columns(4)
+
+    with col1:
+        st.metric("🥇 White-glove customers", f"{len(white_glove):,}")
+
+    with col2:
+        st.metric(
+            "White-glove revenue at risk",
+            f"${white_glove['expected_revenue_at_risk'].sum():,.0f}"
+        )
+
+    with col3:
+        st.metric("🤖 Automated-tier customers", f"{len(automated_tier):,}")
+
+    with col4:
+        st.metric(
+            "Automated-tier revenue at risk",
+            f"${automated_tier['expected_revenue_at_risk'].sum():,.0f}"
+        )
+
+    st.caption(
+        "White-glove tier = top 10% of customers by churn probability AND "
+        "estimated customer value at or above the median (action: immediate "
+        "personal call from a senior Customer Success Manager, tailored with "
+        "the SHAP churn reasons). Automated tier = MEDIUM risk with "
+        "below-median value (action: automated email drip campaign with an "
+        "optional 15% discount)."
+    )
+
+    white_glove_columns = [
+        c for c in [
+            "customer_id",
+            "churn_probability",
+            "monthly_charges",
+            "tenure_months",
+            "estimated_customer_value",
+            "expected_revenue_at_risk",
+            "retention_priority",
+        ]
+        if c in white_glove.columns
+    ]
+
+    st.dataframe(
+        white_glove.sort_values(
+            "expected_revenue_at_risk", ascending=False
+        )[white_glove_columns].head(15),
+        width="stretch",
+        hide_index=True
+    )
+
+    # --------------------------------------------------------
     # FILTER
     # --------------------------------------------------------
 
@@ -1983,19 +2273,21 @@ elif page == "💰 Retention Priority":
     st.markdown("""
     **🔴 CRITICAL**
 
-    Immediate personalized retention intervention.
+    White-glove intervention: immediate personal call from a senior
+    Customer Success Manager, tailored with the SHAP churn reasons.
 
     **🟠 HIGH**
 
-    Priority retention campaign.
+    Priority retention campaign with a personalized offer.
 
     **🟡 MEDIUM-HIGH**
 
-    Targeted retention campaign.
+    Targeted retention campaign by the Customer Success team.
 
     **🟡 MEDIUM**
 
-    Monitor and engage the customer.
+    Automated email drip campaign (content, webinars) with an optional
+    15% discount on the next billing cycle.
 
     **🟢 LOW**
 

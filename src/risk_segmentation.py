@@ -108,10 +108,10 @@ df["risk_level"] = assign_risk_tier(churn_probability, threshold)
 def recommended_action(risk):
 
     if risk == "HIGH":
-        return "Proactive retention intervention"
+        return "Proactive intervention: CRM alert and call from a senior CSM, tailored with churn reasons"
 
     elif risk == "MEDIUM":
-        return "Targeted retention campaign"
+        return "Automated email drip campaign with an optional 15% discount"
 
     else:
         return "Normal customer engagement"

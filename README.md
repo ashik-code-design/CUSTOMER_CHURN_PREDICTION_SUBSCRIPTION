@@ -11,10 +11,10 @@ This project uses machine learning to predict customer churn for subscription-ba
 - **Business Dashboard:** Customer statistics, churn rates, revenue metrics, and interactive charts (light and dark mode).
 - **Churn Prediction:** Estimate the churn probability of one customer, with a SHAP explanation of the top factors.
 - **Batch Prediction:** Upload a CSV or Excel file and download predictions with `churn_probability`, `risk_level` and `top_3_churn_reasons`.
-- **Model Analysis:** Compare Logistic Regression, Random Forest and XGBoost using cross-validation, held-out test metrics, tuned vs. 0.50 thresholds, a calibration check, an illustrative cost, and SHAP plots.
-- **Customer Survival:** Tenure cohorts, a churn-rate heatmap (tenure cohort × contract type), and a Kaplan-Meier survival curve.
-- **Risk Segmentation:** Group customers into low-, medium- and high-risk tiers.
-- **Retention Priority:** Rank customers by calibrated churn probability and estimated customer value.
+- **Model Analysis:** Compare Logistic Regression, Random Forest and XGBoost using cross-validation, held-out test metrics, tuned vs. 0.50 thresholds, a calibration check, an illustrative cost, SHAP plots, and a note on why accuracy is misleading for churn.
+- **Customer Survival:** Tenure cohorts, a churn-rate heatmap (tenure cohort × contract type), a Kaplan-Meier survival curve, and a reading of where survival falls fastest.
+- **Risk Segmentation:** Group customers into low-, medium- and high-risk tiers, with a risk-decile view (decile 1 = the highest-risk 10%).
+- **Retention Priority:** Rank customers by calibrated churn probability and estimated customer value, with a white-glove tier (top 10% risk and above-median value) and an automated tier (medium risk, below-median value).
 
 ## Technologies Used
 
@@ -93,7 +93,7 @@ All numbers below come from `python src/compare_models.py` on this synthetic dat
 ### Data findings
 
 - Churn is highest in the first year (38.8% for 0–6 months and 41.3% for 7–12 months) and lowest after five years (21.5%).
-- Kaplan-Meier estimates: about 92.5% of customers remain active after 12 months and about 58% after 60 months; the median survival time is 66 months. This analysis is illustrative (see Limitations).
+- Kaplan-Meier estimates: about 92.5% of customers remain active after 12 months and about 58% after 60 months; the median survival time is 66 months. Survival falls fastest between months 48 and 60 (from about 69% to 58%, roughly 0.9 percentage points per month), so retention outreach would be scheduled shortly before that window. This analysis is illustrative (see Limitations).
 
 ## Risk Categories
 
@@ -104,6 +104,8 @@ Risk tiers use the tuned decision threshold, so "HIGH" always matches a "Churn" 
 - **Low Risk:** probability below half of the threshold.
 
 The same rule is used in the app, in batch predictions and in `src/risk_segmentation.py`. Retention priority then splits the HIGH and MEDIUM tiers using expected revenue at risk (the top half of each tier becomes CRITICAL or MEDIUM-HIGH).
+
+Recommended actions follow the project brief: CRITICAL / white-glove customers get an immediate call from a senior Customer Success Manager tailored with the SHAP churn reasons, and lower-value medium-risk customers get an automated email drip campaign with an optional 15% discount.
 
 ## Project Structure
 
@@ -195,12 +197,13 @@ Streamlit will display a local URL in the terminal. Open that URL in your browse
 | Compare Logistic Regression, Random Forest, XGBoost | Implemented |
 | Class imbalance handling, cross-validation | Implemented (class weights, 5-fold CV) |
 | Recall, Precision, ROC-AUC, PR-AUC | Implemented |
+| Why accuracy is misleading | Implemented (explained in the app) |
 | Expected-value cost framework and threshold tuning | Implemented with illustrative costs and an assumed save rate |
 | Calibrated probabilities | Implemented (Platt scaling) |
 | SHAP global and per-customer explanations | Implemented |
 | Per-customer top churn reasons in the output | Implemented (batch CSV) |
-| Cohort analysis and Kaplan-Meier survival | Implemented, using tenure cohorts (no signup dates in the data) |
-| Risk tiers and value-based retention strategy | Implemented |
+| Cohort analysis and Kaplan-Meier survival | Implemented, using tenure cohorts (no signup dates in the data), with a reading of the steepest survival decline |
+| Risk tiers, risk deciles and value-based retention strategy (white-glove and automated tiers) | Implemented |
 | Feature engineering (RFM, support friction, inactivity) | Partly implemented as single-snapshot proxies |
 | Velocity features (7-day vs. 30-day), DAU, feature adoption, NPS/sentiment text | Not possible: the dataset has no time series or product-usage logs |
 | Predict churn within the next 30 days | Not possible: the dataset is a single snapshot |
