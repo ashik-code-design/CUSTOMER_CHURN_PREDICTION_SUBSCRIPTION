@@ -15,6 +15,7 @@ This project uses machine learning to predict customer churn for subscription-ba
 - **Customer Survival:** Tenure cohorts, a churn-rate heatmap (tenure cohort × contract type), a Kaplan-Meier survival curve, and a reading of where survival falls fastest.
 - **Risk Segmentation:** Group customers into low-, medium- and high-risk tiers, with a risk-decile view (decile 1 = the highest-risk 10%).
 - **Retention Priority:** Rank customers by calibrated churn probability and estimated customer value, with a white-glove tier (top 10% risk and above-median value) and an automated tier (medium risk, below-median value).
+- **Batch scoring job:** `python src/batch_scoring.py` scores a customer file (CSV or Excel) from the command line and writes `churn_probability`, `risk_tier` and `top_3_churn_reasons`; it can be scheduled (see Installation and Setup).
 
 ## Technologies Used
 
@@ -124,6 +125,8 @@ customer-churn-prediction/
 │   ├── kaplan_meier_curve.png
 │   ├── risk_segmented_customers.csv
 │   ├── retention_priority.csv
+│   ├── batch_scores.csv                # written by batch_scoring.py
+│   ├── batch_scoring_log.csv           # one line per scoring run
 │   └── shap/
 ├── models/
 │   ├── best_model.pkl                  # calibrated model served by the app
@@ -145,6 +148,7 @@ customer-churn-prediction/
 │   ├── risk_segmentation.py
 │   ├── retention_priority.py
 │   ├── shap_analysis.py
+│   ├── batch_scoring.py                # schedulable batch scoring job
 │   ├── survival_analysis.py
 │   └── train_model.py, train_random_forest.py, train_xgboost.py   # single-model scripts (reference)
 └── venv/
@@ -182,7 +186,21 @@ python src/survival_analysis.py
 
 Re-run the first four commands whenever `compare_models.py`, the cost settings or the feature settings change. Keep `src/churn_features.py` in place: the saved model needs it to load.
 
-### 5. Run the Streamlit application
+### 5. Optional: score a new customer file and schedule it
+
+```powershell
+python src/batch_scoring.py --input data/new_customers.csv --output data/new_scores.csv
+```
+
+The file needs the same customer columns as `data/customer_churn.csv` (without `churn`). The output has `customer_id`, `churn_probability`, `risk_tier`, `top_3_churn_reasons`, `model` and `scored_at`, and each run adds one line to `data/batch_scoring_log.csv`.
+
+To run it every night on Windows (example, replace the paths with yours):
+
+```powershell
+schtasks /Create /SC DAILY /ST 02:00 /TN "ChurnBatchScoring" /TR "C:\customer-churn-prediction\venv\Scripts\python.exe C:\customer-churn-prediction\src\batch_scoring.py"
+```
+
+### 6. Run the Streamlit application
 
 ```powershell
 python -m streamlit run app.py
@@ -201,7 +219,8 @@ Streamlit will display a local URL in the terminal. Open that URL in your browse
 | Expected-value cost framework and threshold tuning | Implemented with illustrative costs and an assumed save rate |
 | Calibrated probabilities | Implemented (Platt scaling) |
 | SHAP global and per-customer explanations | Implemented |
-| Per-customer top churn reasons in the output | Implemented (batch CSV) |
+| Per-customer top churn reasons in the output | Implemented (app batch page and `src/batch_scoring.py`) |
+| Batch inference for all customers, schedulable | Implemented as a command-line job (Airflow orchestration is design-only) |
 | Cohort analysis and Kaplan-Meier survival | Implemented, using tenure cohorts (no signup dates in the data), with a reading of the steepest survival decline |
 | Risk tiers, risk deciles and value-based retention strategy (white-glove and automated tiers) | Implemented |
 | Feature engineering (RFM, support friction, inactivity) | Partly implemented as single-snapshot proxies |
@@ -212,6 +231,29 @@ Streamlit will display a local URL in the terminal. Open that URL in your browse
 | Airflow, MLflow, warehouse, reverse ETL | Designed only (see below) |
 | Drift monitoring and automated retraining | Designed only (see below) |
 | Uplift modeling | Future scope |
+
+## Mapping to the Brief's Data Domains
+
+| Brief domain and field | In this dataset |
+|---|---|
+| **Demographic and account:** industry, company size, geography | Not available |
+| Subscription tier | Proxy: `contract_type`, `internet_service` |
+| Tenure | `tenure_months` |
+| *(consumer fields not in the brief)* | `age`, `gender`, `senior_citizen` |
+| **Financial and billing:** MRR | `monthly_charges` (also `total_charges`) |
+| Billing frequency | Not available (partly reflected by `contract_type`) |
+| Discount usage | `discount` |
+| Payment delays | Not available (only `payment_method` and `auto_payment`) |
+| **Product telemetry:** daily active users | Proxy: `logins_30d` |
+| Session length | Proxy: `usage_hours_30d`, engineered `usage_hours_per_login` |
+| Recency | `last_login_days` (plus engineered `inactive_14d`) |
+| Feature adoption rate, time-to-value | Not available |
+| **Support and sentiment:** open tickets | `support_tickets_30d` |
+| Average resolution time | Not available (so the support friction index is a proxy: tickets per login) |
+| NPS | Proxy: `satisfaction_score` (1-10) |
+| Sentiment of support chat logs | Not available |
+
+About half of the brief's fields exist in this dataset, which is why this requirement is only partly met. Adding the missing fields requires real CRM, billing and product-analytics data.
 
 ## Deployment and MLOps Design (designed, not implemented)
 
@@ -228,7 +270,7 @@ Data warehouse: user_id, churn_probability, risk_tier, top_3_churn_reasons
 Salesforce - Zendesk - Marketo - email / SMS campaigns
 ```
 
-- **Implemented in this project:** feature engineering, model comparison with cross-validation, calibration, cost-based threshold tuning, SHAP explanations, and batch scoring with top churn reasons (CSV export).
+- **Implemented in this project:** feature engineering, model comparison with cross-validation, calibration, cost-based threshold tuning, SHAP explanations, and a batch scoring job with top churn reasons (`src/batch_scoring.py`, schedulable with Windows Task Scheduler or cron).
 - **Designed only:** scheduled pipelines, a model registry, warehouse and CRM sync, and drift monitoring. Monitoring would track feature drift (for example, a sudden change in login frequency) and concept drift (for example, a weakening link between support tickets and churn), and trigger retraining when PR-AUC falls below an agreed floor.
 
 ## Limitations

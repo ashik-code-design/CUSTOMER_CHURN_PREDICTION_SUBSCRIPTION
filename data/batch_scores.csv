@@ -1,0 +1,1001 @@
+customer_id,churn_probability,risk_tier,top_3_churn_reasons,model,scored_at
+CUST10917,0.9795,HIGH,support_tickets_30d; monthly_charges; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10180,0.9425,HIGH,support_tickets_30d; monthly_charges; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10961,0.9408,HIGH,monthly_charges; satisfaction_score; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10860,0.9192,HIGH,monthly_charges; satisfaction_score; support_tickets_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10820,0.919,HIGH,monthly_charges; satisfaction_score; support_tickets_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10159,0.9174,HIGH,monthly_charges; support_tickets_30d; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10333,0.9072,HIGH,monthly_charges; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10232,0.9053,HIGH,monthly_charges; satisfaction_score; support_tickets_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10979,0.8831,HIGH,monthly_charges; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10104,0.8733,HIGH,monthly_charges; satisfaction_score; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10697,0.8665,HIGH,monthly_charges; usage_hours_30d; support_tickets_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10599,0.8663,HIGH,support_tickets_30d; monthly_charges; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10515,0.8558,HIGH,support_tickets_30d; satisfaction_score; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10057,0.8542,HIGH,satisfaction_score; support_tickets_30d; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10339,0.8518,HIGH,monthly_charges; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10503,0.8515,HIGH,monthly_charges; satisfaction_score; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10998,0.8497,HIGH,monthly_charges; satisfaction_score; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10783,0.8485,HIGH,monthly_charges; usage_hours_30d; support_tickets_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10761,0.8452,HIGH,satisfaction_score; monthly_charges; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10715,0.8404,HIGH,monthly_charges; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10388,0.8353,HIGH,monthly_charges; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10143,0.8333,HIGH,monthly_charges; satisfaction_score; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10707,0.832,HIGH,monthly_charges; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10880,0.8149,HIGH,monthly_charges; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10927,0.813,HIGH,monthly_charges; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10611,0.8096,HIGH,monthly_charges; support_tickets_30d; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10319,0.8084,HIGH,satisfaction_score; support_tickets_30d; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10289,0.8029,HIGH,monthly_charges; satisfaction_score; support_tickets_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10173,0.8028,HIGH,satisfaction_score; monthly_charges; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10369,0.8016,HIGH,monthly_charges; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10624,0.8014,HIGH,monthly_charges; tenure_months; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10153,0.8,HIGH,monthly_charges; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10450,0.7994,HIGH,monthly_charges; satisfaction_score; support_tickets_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10587,0.7987,HIGH,monthly_charges; satisfaction_score; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10765,0.7977,HIGH,satisfaction_score; monthly_charges; support_tickets_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10762,0.7956,HIGH,monthly_charges; satisfaction_score; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10641,0.7951,HIGH,monthly_charges; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10695,0.7944,HIGH,monthly_charges; support_tickets_30d; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10209,0.7903,HIGH,monthly_charges; satisfaction_score; support_tickets_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10577,0.7868,HIGH,monthly_charges; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10007,0.7864,HIGH,monthly_charges; satisfaction_score; support_tickets_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10248,0.7819,HIGH,monthly_charges; support_tickets_30d; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10015,0.7813,HIGH,monthly_charges; support_tickets_30d; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10107,0.7767,HIGH,monthly_charges; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10112,0.7698,HIGH,monthly_charges; support_tickets_30d; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10884,0.768,HIGH,satisfaction_score; monthly_charges; support_tickets_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10050,0.767,HIGH,monthly_charges; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10847,0.7649,HIGH,satisfaction_score; monthly_charges; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10568,0.759,HIGH,satisfaction_score; monthly_charges; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10551,0.7577,HIGH,monthly_charges; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10185,0.757,HIGH,support_tickets_30d; last_login_days; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10344,0.7569,HIGH,monthly_charges; last_login_days; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10914,0.7533,HIGH,monthly_charges; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10586,0.7524,HIGH,monthly_charges; last_login_days; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10929,0.7509,HIGH,monthly_charges; satisfaction_score; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10042,0.7497,HIGH,monthly_charges; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10245,0.7493,HIGH,monthly_charges; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10022,0.7456,HIGH,monthly_charges; support_tickets_30d; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10836,0.745,HIGH,monthly_charges; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10342,0.7441,HIGH,support_tickets_30d; monthly_charges; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10569,0.7434,HIGH,monthly_charges; satisfaction_score; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10038,0.7412,HIGH,monthly_charges; support_tickets_30d; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10562,0.7403,HIGH,satisfaction_score; support_tickets_30d; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10235,0.7386,HIGH,monthly_charges; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10182,0.7385,HIGH,satisfaction_score; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10864,0.7354,HIGH,monthly_charges; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10988,0.7342,HIGH,support_tickets_30d; monthly_charges; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10069,0.7318,HIGH,monthly_charges; satisfaction_score; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10605,0.7303,HIGH,monthly_charges; satisfaction_score; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10275,0.7303,HIGH,monthly_charges; satisfaction_score; support_tickets_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10426,0.7271,HIGH,monthly_charges; satisfaction_score; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10598,0.7251,HIGH,monthly_charges; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10623,0.7246,HIGH,monthly_charges; satisfaction_score; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10916,0.7211,HIGH,satisfaction_score; monthly_charges; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10667,0.7206,HIGH,satisfaction_score; monthly_charges; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10282,0.7175,HIGH,support_tickets_30d; satisfaction_score; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10056,0.7157,HIGH,satisfaction_score; support_tickets_30d; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10014,0.7153,HIGH,monthly_charges; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10331,0.7147,HIGH,monthly_charges; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10291,0.7075,HIGH,monthly_charges; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10101,0.7067,HIGH,monthly_charges; satisfaction_score; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10097,0.7002,HIGH,monthly_charges; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10494,0.6996,HIGH,support_tickets_30d; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10570,0.6954,HIGH,satisfaction_score; contract_type_Monthly; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10926,0.6881,HIGH,monthly_charges; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10251,0.6837,HIGH,monthly_charges; satisfaction_score; support_tickets_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10627,0.6802,HIGH,satisfaction_score; monthly_charges; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10668,0.6778,HIGH,monthly_charges; support_tickets_30d; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10665,0.6743,HIGH,monthly_charges; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10606,0.6711,HIGH,satisfaction_score; support_tickets_30d; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10846,0.6692,HIGH,monthly_charges; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10935,0.6663,HIGH,monthly_charges; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10789,0.6651,HIGH,satisfaction_score; monthly_charges; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10643,0.664,HIGH,satisfaction_score; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10618,0.6634,HIGH,satisfaction_score; monthly_charges; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10802,0.6628,HIGH,satisfaction_score; support_tickets_30d; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10871,0.6624,HIGH,monthly_charges; support_tickets_30d; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10694,0.6603,HIGH,monthly_charges; support_tickets_30d; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10128,0.6587,HIGH,monthly_charges; support_tickets_30d; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10548,0.6552,HIGH,satisfaction_score; monthly_charges; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10224,0.6544,HIGH,support_tickets_30d; monthly_charges; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10632,0.6523,HIGH,monthly_charges; satisfaction_score; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10915,0.6491,HIGH,monthly_charges; satisfaction_score; support_tickets_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10996,0.6488,HIGH,monthly_charges; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10002,0.6479,HIGH,satisfaction_score; support_tickets_30d; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10373,0.6469,HIGH,monthly_charges; support_tickets_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10080,0.6467,HIGH,monthly_charges; usage_hours_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10115,0.6424,HIGH,monthly_charges; support_tickets_30d; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10498,0.6416,HIGH,support_tickets_30d; satisfaction_score; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10495,0.6397,HIGH,monthly_charges; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10634,0.6384,HIGH,monthly_charges; contract_type_Monthly; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10217,0.6382,HIGH,monthly_charges; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10831,0.6292,HIGH,monthly_charges; contract_type_Monthly; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10408,0.6256,HIGH,satisfaction_score; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10557,0.6228,HIGH,monthly_charges; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10571,0.6177,HIGH,satisfaction_score; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10588,0.6174,HIGH,satisfaction_score; monthly_charges; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10226,0.6162,HIGH,monthly_charges; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10657,0.6148,HIGH,monthly_charges; support_tickets_30d; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10863,0.6138,HIGH,satisfaction_score; contract_type_Monthly; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10747,0.6109,HIGH,monthly_charges; support_tickets_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10931,0.6105,HIGH,monthly_charges; contract_type_Monthly; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10714,0.6102,HIGH,satisfaction_score; support_tickets_30d; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10540,0.6086,HIGH,satisfaction_score; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10774,0.6065,HIGH,satisfaction_score; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10843,0.6054,HIGH,monthly_charges; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10683,0.6037,HIGH,satisfaction_score; contract_type_Monthly; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10493,0.6036,HIGH,support_tickets_30d; satisfaction_score; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10805,0.6025,HIGH,satisfaction_score; contract_type_Monthly; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10167,0.5986,HIGH,satisfaction_score; support_tickets_30d; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10324,0.5954,HIGH,satisfaction_score; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10937,0.5905,HIGH,monthly_charges; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10033,0.5871,HIGH,satisfaction_score; last_login_days; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10745,0.5855,HIGH,satisfaction_score; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10377,0.5847,HIGH,monthly_charges; satisfaction_score; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10580,0.5841,HIGH,support_tickets_30d; monthly_charges; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10286,0.5757,HIGH,monthly_charges; last_login_days; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10930,0.5745,HIGH,support_tickets_30d; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10964,0.5744,HIGH,monthly_charges; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10912,0.5729,HIGH,monthly_charges; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10682,0.5728,HIGH,support_tickets_30d; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10054,0.5693,HIGH,satisfaction_score; monthly_charges; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10656,0.5677,HIGH,support_tickets_30d; monthly_charges; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10299,0.5675,HIGH,monthly_charges; support_tickets_30d; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST11000,0.5662,HIGH,monthly_charges; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10976,0.5662,HIGH,monthly_charges; contract_type_Monthly; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10995,0.5656,HIGH,satisfaction_score; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10934,0.5644,HIGH,satisfaction_score; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10992,0.5633,HIGH,support_tickets_30d; satisfaction_score; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10148,0.5629,HIGH,monthly_charges; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10317,0.5598,HIGH,monthly_charges; contract_type_Monthly; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10452,0.5598,HIGH,monthly_charges; tenure_months; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10678,0.5589,HIGH,monthly_charges; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10223,0.5572,HIGH,satisfaction_score; monthly_charges; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10371,0.5565,HIGH,satisfaction_score; contract_type_Monthly; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10827,0.5554,HIGH,monthly_charges; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10661,0.5547,HIGH,support_tickets_30d; monthly_charges; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10946,0.5542,HIGH,monthly_charges; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10099,0.5531,HIGH,contract_type_Monthly; tenure_months; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10838,0.553,HIGH,support_tickets_30d; last_login_days; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10702,0.5494,HIGH,monthly_charges; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10638,0.5479,HIGH,satisfaction_score; contract_type_Monthly; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10952,0.5457,HIGH,satisfaction_score; monthly_charges; support_tickets_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10380,0.5446,HIGH,monthly_charges; last_login_days; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10512,0.5403,HIGH,usage_hours_30d; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10719,0.5389,HIGH,satisfaction_score; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10928,0.5372,HIGH,monthly_charges; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10541,0.5371,HIGH,monthly_charges; usage_hours_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10440,0.5341,HIGH,monthly_charges; contract_type_Monthly; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10607,0.5317,HIGH,monthly_charges; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10635,0.5317,HIGH,monthly_charges; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10399,0.5313,HIGH,monthly_charges; satisfaction_score; support_tickets_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10645,0.531,HIGH,monthly_charges; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10655,0.5302,HIGH,monthly_charges; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10310,0.5277,HIGH,support_tickets_30d; monthly_charges; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10043,0.5258,HIGH,monthly_charges; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10601,0.5224,HIGH,monthly_charges; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10791,0.5215,HIGH,support_tickets_30d; satisfaction_score; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10520,0.5204,HIGH,monthly_charges; last_login_days; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10041,0.5198,HIGH,monthly_charges; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10908,0.518,HIGH,monthly_charges; last_login_days; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10146,0.5148,HIGH,monthly_charges; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10254,0.5143,HIGH,monthly_charges; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10473,0.5119,HIGH,satisfaction_score; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10461,0.5118,HIGH,satisfaction_score; contract_type_Monthly; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10528,0.5116,HIGH,satisfaction_score; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10366,0.5097,HIGH,monthly_charges; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10476,0.5094,HIGH,satisfaction_score; monthly_charges; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10522,0.5092,HIGH,support_tickets_30d; satisfaction_score; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10242,0.5077,HIGH,satisfaction_score; support_tickets_30d; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10370,0.5075,HIGH,support_tickets_30d; monthly_charges; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10361,0.5059,HIGH,satisfaction_score; monthly_charges; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10083,0.5033,HIGH,satisfaction_score; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10393,0.503,HIGH,monthly_charges; satisfaction_score; support_tickets_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10407,0.5017,HIGH,satisfaction_score; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10794,0.5002,HIGH,monthly_charges; satisfaction_score; support_tickets_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10283,0.499,HIGH,satisfaction_score; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10735,0.4979,HIGH,satisfaction_score; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10045,0.4958,HIGH,tenure_months; contract_type_Monthly; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10303,0.4945,HIGH,support_tickets_30d; monthly_charges; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10240,0.4944,HIGH,monthly_charges; last_login_days; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10579,0.4902,HIGH,satisfaction_score; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10622,0.4885,HIGH,monthly_charges; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10664,0.4885,HIGH,monthly_charges; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10708,0.4858,HIGH,satisfaction_score; usage_hours_30d; support_tickets_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10040,0.4838,HIGH,satisfaction_score; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10679,0.4827,HIGH,monthly_charges; usage_hours_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10091,0.4809,HIGH,satisfaction_score; monthly_charges; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10851,0.4794,HIGH,satisfaction_score; last_login_days; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10687,0.4784,HIGH,monthly_charges; satisfaction_score; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10378,0.4783,HIGH,monthly_charges; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10081,0.4782,HIGH,monthly_charges; satisfaction_score; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10356,0.4778,HIGH,support_tickets_30d; satisfaction_score; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10673,0.4776,HIGH,satisfaction_score; contract_type_Monthly; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10763,0.4762,HIGH,monthly_charges; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10030,0.4761,HIGH,monthly_charges; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10773,0.474,HIGH,satisfaction_score; contract_type_Monthly; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10025,0.4647,HIGH,monthly_charges; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10078,0.4643,HIGH,support_tickets_30d; monthly_charges; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10881,0.4623,HIGH,satisfaction_score; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10446,0.462,HIGH,monthly_charges; support_tickets_30d; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10608,0.4593,HIGH,monthly_charges; tenure_months; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10268,0.4575,HIGH,satisfaction_score; monthly_charges; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10666,0.4566,HIGH,satisfaction_score; monthly_charges; support_tickets_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10296,0.4565,HIGH,monthly_charges; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10538,0.4559,HIGH,satisfaction_score; tenure_months; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10857,0.4558,HIGH,support_tickets_30d; tenure_months; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10330,0.453,HIGH,monthly_charges; tenure_months; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10553,0.4507,HIGH,monthly_charges; logins_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10962,0.4507,HIGH,monthly_charges; usage_hours_30d; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10061,0.4507,HIGH,monthly_charges; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10699,0.4507,HIGH,support_tickets_30d; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10416,0.45,HIGH,monthly_charges; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10326,0.4451,HIGH,monthly_charges; last_login_days; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10479,0.445,HIGH,monthly_charges; satisfaction_score; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10948,0.4446,HIGH,satisfaction_score; monthly_charges; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10312,0.4438,HIGH,monthly_charges; contract_type_Monthly; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10751,0.4434,HIGH,monthly_charges; contract_type_Monthly; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10003,0.4423,HIGH,satisfaction_score; support_tickets_30d; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10103,0.441,HIGH,satisfaction_score; last_login_days; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10502,0.4403,HIGH,support_tickets_30d; tenure_months; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10477,0.4386,HIGH,monthly_charges; last_login_days; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10940,0.4383,HIGH,support_tickets_30d; satisfaction_score; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10362,0.4383,HIGH,monthly_charges; satisfaction_score; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10739,0.4381,HIGH,support_tickets_30d; monthly_charges; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10020,0.4364,HIGH,contract_type_Monthly; monthly_charges; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10311,0.4363,HIGH,monthly_charges; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10900,0.4351,HIGH,last_login_days; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10837,0.4343,HIGH,satisfaction_score; last_login_days; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10953,0.4332,HIGH,satisfaction_score; support_tickets_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10653,0.4323,HIGH,monthly_charges; support_tickets_30d; usage_hours_per_login,Logistic Regression,2026-10-17 15:09:17
+CUST10945,0.4313,HIGH,satisfaction_score; contract_type_Monthly; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10592,0.4303,HIGH,support_tickets_30d; satisfaction_score; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10967,0.428,HIGH,satisfaction_score; monthly_charges; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10793,0.4278,HIGH,support_tickets_30d; monthly_charges; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10529,0.4276,HIGH,support_tickets_30d; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10830,0.4256,HIGH,monthly_charges; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10451,0.4246,HIGH,monthly_charges; satisfaction_score; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10651,0.4231,HIGH,satisfaction_score; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10718,0.4231,HIGH,satisfaction_score; support_tickets_30d; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10958,0.4209,HIGH,satisfaction_score; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10746,0.4198,HIGH,monthly_charges; satisfaction_score; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10787,0.4187,HIGH,monthly_charges; satisfaction_score; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10294,0.4185,HIGH,monthly_charges; last_login_days; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10534,0.4165,HIGH,monthly_charges; support_tickets_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10445,0.4147,HIGH,satisfaction_score; support_tickets_30d; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10972,0.4125,HIGH,satisfaction_score; monthly_charges; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10005,0.4119,HIGH,usage_hours_30d; monthly_charges; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10717,0.4109,HIGH,monthly_charges; satisfaction_score; support_tickets_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10800,0.4105,HIGH,monthly_charges; tenure_months; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10201,0.4094,HIGH,monthly_charges; support_tickets_30d; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10506,0.4088,HIGH,monthly_charges; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10172,0.408,HIGH,satisfaction_score; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10313,0.4074,HIGH,monthly_charges; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10466,0.4071,HIGH,support_tickets_30d; monthly_charges; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10019,0.4065,HIGH,support_tickets_30d; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10340,0.4048,HIGH,support_tickets_30d; monthly_charges; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10105,0.4013,HIGH,monthly_charges; satisfaction_score; support_tickets_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10909,0.4008,HIGH,monthly_charges; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10006,0.3989,HIGH,satisfaction_score; monthly_charges; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10271,0.3964,HIGH,monthly_charges; satisfaction_score; usage_hours_per_login,Logistic Regression,2026-10-17 15:09:17
+CUST10960,0.3957,HIGH,satisfaction_score; usage_hours_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10165,0.3932,HIGH,satisfaction_score; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10059,0.3917,HIGH,satisfaction_score; monthly_charges; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10072,0.3899,HIGH,support_tickets_30d; last_login_days; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10721,0.3893,HIGH,monthly_charges; support_tickets_30d; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10447,0.3845,HIGH,monthly_charges; satisfaction_score; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10147,0.3829,HIGH,support_tickets_30d; satisfaction_score; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10230,0.3812,HIGH,monthly_charges; usage_hours_30d; support_tickets_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10788,0.3806,HIGH,support_tickets_30d; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10403,0.38,HIGH,contract_type_Monthly; last_login_days; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10748,0.3797,HIGH,satisfaction_score; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10437,0.3782,HIGH,monthly_charges; usage_hours_30d; support_tickets_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10644,0.3781,HIGH,monthly_charges; last_login_days; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10956,0.3778,HIGH,usage_hours_30d; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10118,0.3774,HIGH,satisfaction_score; monthly_charges; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10032,0.3759,HIGH,monthly_charges; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10968,0.3755,HIGH,monthly_charges; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10093,0.3724,HIGH,support_tickets_30d; satisfaction_score; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10993,0.3717,HIGH,monthly_charges; usage_hours_30d; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10379,0.3712,HIGH,monthly_charges; support_tickets_30d; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10263,0.3712,HIGH,monthly_charges; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10496,0.3699,HIGH,monthly_charges; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10100,0.3692,HIGH,satisfaction_score; contract_type_Monthly; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10304,0.3686,HIGH,monthly_charges; usage_hours_30d; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10798,0.368,HIGH,monthly_charges; tenure_months; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10849,0.368,HIGH,usage_hours_30d; contract_type_Monthly; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10315,0.3661,HIGH,satisfaction_score; monthly_charges; support_tickets_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10252,0.3658,HIGH,monthly_charges; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10026,0.3648,HIGH,satisfaction_score; last_login_days; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10918,0.3646,HIGH,support_tickets_30d; satisfaction_score; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10941,0.3638,HIGH,monthly_charges; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10626,0.3627,HIGH,monthly_charges; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10744,0.362,HIGH,monthly_charges; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10346,0.3616,HIGH,monthly_charges; support_tickets_30d; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10487,0.3615,HIGH,satisfaction_score; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10897,0.3595,HIGH,support_tickets_30d; last_login_days; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10888,0.3567,HIGH,monthly_charges; contract_type_Monthly; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10861,0.3566,HIGH,monthly_charges; support_tickets_30d; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10782,0.3563,HIGH,monthly_charges; contract_type_Monthly; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10894,0.3536,HIGH,satisfaction_score; contract_type_Monthly; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10556,0.3526,HIGH,monthly_charges; contract_type_Monthly; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10298,0.3517,HIGH,support_tickets_30d; last_login_days; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10139,0.3515,HIGH,contract_type_Monthly; tenure_months; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10874,0.3507,HIGH,monthly_charges; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10640,0.3495,HIGH,monthly_charges; contract_type_Monthly; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10975,0.3487,HIGH,support_tickets_30d; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10889,0.3473,HIGH,contract_type_Monthly; last_login_days; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10166,0.3414,HIGH,monthly_charges; tenure_months; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10828,0.3405,HIGH,satisfaction_score; support_tickets_30d; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10335,0.3395,HIGH,monthly_charges; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10899,0.3393,HIGH,satisfaction_score; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10037,0.3383,HIGH,monthly_charges; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10348,0.3374,HIGH,satisfaction_score; contract_type_Monthly; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10085,0.3368,HIGH,monthly_charges; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10825,0.336,HIGH,monthly_charges; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10726,0.3348,HIGH,support_tickets_30d; satisfaction_score; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10295,0.3334,HIGH,contract_type_Monthly; tenure_months; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10573,0.3325,HIGH,support_tickets_30d; contract_type_Monthly; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10336,0.3323,HIGH,monthly_charges; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10690,0.3308,HIGH,support_tickets_30d; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10184,0.3295,HIGH,monthly_charges; support_tickets_30d; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10066,0.3292,HIGH,support_tickets_30d; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10279,0.3291,HIGH,monthly_charges; support_tickets_30d; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10650,0.3286,HIGH,monthly_charges; last_login_days; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10564,0.3274,HIGH,contract_type_Monthly; monthly_charges; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10936,0.3269,HIGH,support_tickets_30d; contract_type_Monthly; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10879,0.3253,HIGH,support_tickets_30d; last_login_days; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10200,0.3248,HIGH,monthly_charges; last_login_days; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10693,0.3236,HIGH,usage_hours_30d; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10959,0.3228,HIGH,satisfaction_score; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10729,0.3226,HIGH,satisfaction_score; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10278,0.322,HIGH,monthly_charges; satisfaction_score; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10214,0.3212,HIGH,monthly_charges; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10062,0.3191,HIGH,support_tickets_30d; contract_type_Monthly; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10270,0.319,HIGH,usage_hours_30d; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10459,0.3186,HIGH,monthly_charges; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10116,0.318,HIGH,support_tickets_30d; monthly_charges; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10412,0.3178,HIGH,monthly_charges; satisfaction_score; support_tickets_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10472,0.3176,HIGH,support_tickets_30d; monthly_charges; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10497,0.3171,HIGH,monthly_charges; inactive_14d; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10740,0.315,HIGH,contract_type_Monthly; last_login_days; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10898,0.3144,HIGH,monthly_charges; satisfaction_score; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10001,0.3141,HIGH,contract_type_Monthly; monthly_charges; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10892,0.3138,HIGH,satisfaction_score; support_tickets_30d; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10181,0.3136,HIGH,monthly_charges; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10614,0.3115,HIGH,monthly_charges; contract_type_Monthly; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10337,0.3109,HIGH,monthly_charges; support_tickets_30d; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10469,0.3107,HIGH,satisfaction_score; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10974,0.3106,HIGH,satisfaction_score; monthly_charges; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10439,0.3103,HIGH,satisfaction_score; monthly_charges; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10142,0.3102,HIGH,support_tickets_30d; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10813,0.3099,HIGH,usage_hours_30d; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10016,0.3087,HIGH,support_tickets_30d; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10372,0.3069,HIGH,satisfaction_score; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10764,0.3063,HIGH,monthly_charges; satisfaction_score; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10354,0.3053,HIGH,satisfaction_score; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10754,0.3049,HIGH,satisfaction_score; contract_type_Monthly; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10204,0.3043,HIGH,monthly_charges; satisfaction_score; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10890,0.3043,HIGH,logins_30d; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10471,0.3035,HIGH,monthly_charges; tenure_months; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10079,0.3029,HIGH,monthly_charges; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10701,0.3023,HIGH,monthly_charges; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10130,0.3023,HIGH,contract_type_Monthly; tenure_months; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10771,0.2985,HIGH,satisfaction_score; support_tickets_30d; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10203,0.2978,HIGH,support_tickets_30d; contract_type_Monthly; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10883,0.2963,HIGH,monthly_charges; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10430,0.296,HIGH,monthly_charges; contract_type_Monthly; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10216,0.296,HIGH,monthly_charges; contract_type_Monthly; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10671,0.2926,HIGH,contract_type_Monthly; tenure_months; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10822,0.2917,HIGH,monthly_charges; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10620,0.2904,HIGH,satisfaction_score; last_login_days; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10449,0.2903,HIGH,contract_type_Monthly; satisfaction_score; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10320,0.2874,HIGH,satisfaction_score; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10221,0.2873,HIGH,monthly_charges; support_tickets_30d; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10359,0.2868,HIGH,monthly_charges; usage_hours_30d; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10549,0.2865,HIGH,satisfaction_score; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10131,0.2858,HIGH,monthly_charges; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10859,0.2843,HIGH,monthly_charges; satisfaction_score; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10381,0.2812,HIGH,monthly_charges; contract_type_Monthly; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10288,0.2808,HIGH,contract_type_Monthly; last_login_days; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10431,0.2802,HIGH,support_tickets_30d; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10151,0.2796,HIGH,satisfaction_score; usage_hours_30d; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10584,0.2792,HIGH,support_tickets_30d; contract_type_Monthly; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10028,0.2775,HIGH,monthly_charges; contract_type_Monthly; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10191,0.2768,HIGH,monthly_charges; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10460,0.2755,HIGH,support_tickets_30d; contract_type_Monthly; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10567,0.2741,HIGH,support_tickets_30d; contract_type_Monthly; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10345,0.2741,HIGH,satisfaction_score; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10508,0.2733,HIGH,monthly_charges; satisfaction_score; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10484,0.2732,HIGH,support_tickets_30d; usage_hours_30d; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10096,0.2694,HIGH,satisfaction_score; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10321,0.2693,HIGH,usage_hours_30d; contract_type_Monthly; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10250,0.2688,HIGH,monthly_charges; satisfaction_score; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10363,0.2684,HIGH,support_tickets_30d; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10405,0.2676,HIGH,satisfaction_score; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10633,0.2666,HIGH,usage_hours_30d; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10594,0.2655,HIGH,contract_type_Monthly; usage_hours_per_login; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10395,0.265,HIGH,contract_type_Monthly; monthly_charges; usage_hours_per_login,Logistic Regression,2026-10-17 15:09:17
+CUST10716,0.2646,HIGH,monthly_charges; support_tickets_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10202,0.2643,HIGH,support_tickets_30d; contract_type_Monthly; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10749,0.2638,HIGH,monthly_charges; last_login_days; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10925,0.2634,HIGH,satisfaction_score; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10075,0.2631,HIGH,support_tickets_30d; satisfaction_score; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10157,0.2618,HIGH,satisfaction_score; monthly_charges; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10462,0.2612,HIGH,support_tickets_30d; satisfaction_score; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10817,0.2609,HIGH,satisfaction_score; monthly_charges; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10048,0.2585,HIGH,monthly_charges; contract_type_Monthly; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10621,0.258,HIGH,contract_type_Monthly; last_login_days; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10259,0.2569,HIGH,satisfaction_score; support_friction_proxy; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10790,0.2568,HIGH,monthly_charges; support_friction_proxy; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10855,0.2568,HIGH,contract_type_Monthly; tenure_months; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10435,0.2548,HIGH,satisfaction_score; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10039,0.2547,HIGH,satisfaction_score; last_login_days; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10301,0.2526,HIGH,monthly_charges; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10284,0.2519,HIGH,support_tickets_30d; contract_type_Monthly; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10704,0.2516,HIGH,support_tickets_30d; last_login_days; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10265,0.2515,HIGH,monthly_charges; tenure_months; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10583,0.2514,HIGH,monthly_charges; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10189,0.2514,HIGH,contract_type_Monthly; usage_hours_per_login; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10088,0.2512,HIGH,monthly_charges; usage_hours_30d; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10470,0.2501,HIGH,monthly_charges; logins_30d; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10060,0.2501,HIGH,monthly_charges; contract_type_Monthly; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10024,0.25,HIGH,satisfaction_score; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10637,0.2493,MEDIUM,monthly_charges; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10488,0.2484,MEDIUM,support_tickets_30d; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10951,0.2468,MEDIUM,monthly_charges; support_tickets_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10168,0.2467,MEDIUM,satisfaction_score; contract_type_Monthly; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10965,0.2456,MEDIUM,contract_type_Monthly; last_login_days; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10138,0.2448,MEDIUM,monthly_charges; support_friction_proxy; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10646,0.2446,MEDIUM,monthly_charges; satisfaction_score; support_tickets_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10856,0.2445,MEDIUM,monthly_charges; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10179,0.2445,MEDIUM,monthly_charges; satisfaction_score; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10106,0.2436,MEDIUM,satisfaction_score; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10826,0.2433,MEDIUM,support_tickets_30d; usage_hours_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10810,0.2433,MEDIUM,support_tickets_30d; contract_type_Monthly; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10923,0.2429,MEDIUM,support_tickets_30d; monthly_charges; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10505,0.2417,MEDIUM,monthly_charges; tenure_months; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10862,0.2409,MEDIUM,monthly_charges; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10872,0.2395,MEDIUM,monthly_charges; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10768,0.2394,MEDIUM,monthly_charges; usage_hours_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10401,0.2393,MEDIUM,monthly_charges; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10341,0.2375,MEDIUM,usage_hours_30d; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10777,0.2374,MEDIUM,usage_hours_30d; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10125,0.2369,MEDIUM,support_tickets_30d; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10807,0.2366,MEDIUM,monthly_charges; usage_hours_per_login; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10516,0.2366,MEDIUM,satisfaction_score; contract_type_Monthly; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10417,0.2363,MEDIUM,support_tickets_30d; contract_type_Monthly; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10027,0.2357,MEDIUM,support_tickets_30d; last_login_days; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10688,0.2355,MEDIUM,satisfaction_score; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10241,0.2355,MEDIUM,satisfaction_score; support_tickets_30d; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10483,0.2353,MEDIUM,support_tickets_30d; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10691,0.2339,MEDIUM,usage_hours_30d; last_login_days; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10404,0.2334,MEDIUM,monthly_charges; satisfaction_score; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10434,0.2329,MEDIUM,support_tickets_30d; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10443,0.2303,MEDIUM,satisfaction_score; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10784,0.2302,MEDIUM,support_tickets_30d; tenure_months; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10190,0.2301,MEDIUM,satisfaction_score; contract_type_Monthly; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10823,0.2287,MEDIUM,contract_type_Monthly; support_friction_proxy; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10021,0.2285,MEDIUM,monthly_charges; logins_30d; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10986,0.2271,MEDIUM,monthly_charges; contract_type_Monthly; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10305,0.2267,MEDIUM,satisfaction_score; last_login_days; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10287,0.2266,MEDIUM,monthly_charges; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10628,0.2261,MEDIUM,satisfaction_score; usage_hours_30d; support_tickets_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10068,0.2257,MEDIUM,monthly_charges; tenure_months; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10824,0.2251,MEDIUM,monthly_charges; contract_type_Monthly; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10023,0.2247,MEDIUM,satisfaction_score; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10669,0.2245,MEDIUM,monthly_charges; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10600,0.2236,MEDIUM,contract_type_Monthly; monthly_charges; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10612,0.2232,MEDIUM,usage_hours_30d; last_login_days; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10769,0.2231,MEDIUM,monthly_charges; contract_type_Monthly; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10722,0.2207,MEDIUM,satisfaction_score; contract_type_Monthly; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10742,0.2201,MEDIUM,support_tickets_30d; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10386,0.2195,MEDIUM,monthly_charges; support_tickets_30d; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10122,0.2176,MEDIUM,monthly_charges; usage_hours_30d; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10274,0.2175,MEDIUM,satisfaction_score; tenure_months; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10853,0.2174,MEDIUM,contract_type_Monthly; tenure_months; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10589,0.2169,MEDIUM,usage_hours_30d; monthly_charges; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10546,0.2168,MEDIUM,support_tickets_30d; contract_type_Monthly; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10876,0.2164,MEDIUM,contract_type_Monthly; payment_method_Electronic check; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10110,0.2148,MEDIUM,last_login_days; contract_type_Monthly; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10629,0.2145,MEDIUM,monthly_charges; contract_type_Monthly; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10875,0.2143,MEDIUM,monthly_charges; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10910,0.2131,MEDIUM,monthly_charges; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10639,0.212,MEDIUM,contract_type_Monthly; monthly_charges; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10314,0.2115,MEDIUM,monthly_charges; support_tickets_30d; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10731,0.2106,MEDIUM,usage_hours_30d; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10858,0.2095,MEDIUM,satisfaction_score; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10933,0.2086,MEDIUM,satisfaction_score; support_tickets_30d; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10052,0.2076,MEDIUM,monthly_charges; usage_hours_30d; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10922,0.2072,MEDIUM,support_tickets_30d; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10560,0.2066,MEDIUM,monthly_charges; last_login_days; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10590,0.2066,MEDIUM,monthly_charges; last_login_days; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10126,0.2043,MEDIUM,tenure_months; contract_type_Monthly; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10947,0.2026,MEDIUM,contract_type_Monthly; last_login_days; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10161,0.2012,MEDIUM,last_login_days; contract_type_Monthly; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10196,0.2006,MEDIUM,monthly_charges; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10193,0.2005,MEDIUM,satisfaction_score; support_tickets_30d; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10510,0.2001,MEDIUM,support_tickets_30d; last_login_days; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10507,0.1998,MEDIUM,monthly_charges; last_login_days; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10999,0.1995,MEDIUM,satisfaction_score; support_friction_proxy; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10760,0.1992,MEDIUM,monthly_charges; last_login_days; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10713,0.199,MEDIUM,monthly_charges; contract_type_Monthly; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10273,0.1989,MEDIUM,satisfaction_score; tenure_months; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10152,0.1984,MEDIUM,monthly_charges; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10848,0.1979,MEDIUM,monthly_charges; satisfaction_score; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10228,0.1978,MEDIUM,support_tickets_30d; contract_type_Monthly; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10272,0.1976,MEDIUM,support_tickets_30d; tenure_months; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10454,0.1974,MEDIUM,monthly_charges; last_login_days; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10882,0.1966,MEDIUM,satisfaction_score; support_friction_proxy; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10613,0.1933,MEDIUM,monthly_charges; satisfaction_score; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10619,0.1925,MEDIUM,satisfaction_score; last_login_days; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10920,0.1925,MEDIUM,last_login_days; contract_type_Monthly; usage_hours_per_login,Logistic Regression,2026-10-17 15:09:17
+CUST10387,0.1924,MEDIUM,monthly_charges; contract_type_Monthly; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10049,0.1915,MEDIUM,support_tickets_30d; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10901,0.1913,MEDIUM,last_login_days; contract_type_Monthly; usage_hours_per_login,Logistic Regression,2026-10-17 15:09:17
+CUST10547,0.1897,MEDIUM,satisfaction_score; last_login_days; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10419,0.1894,MEDIUM,usage_hours_30d; support_friction_proxy; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10065,0.1893,MEDIUM,support_tickets_30d; contract_type_Monthly; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10536,0.1878,MEDIUM,monthly_charges; last_login_days; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10533,0.1874,MEDIUM,satisfaction_score; usage_hours_30d; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10500,0.1871,MEDIUM,satisfaction_score; monthly_charges; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10258,0.1865,MEDIUM,support_tickets_30d; last_login_days; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10792,0.1865,MEDIUM,support_tickets_30d; usage_hours_30d; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10582,0.1846,MEDIUM,usage_hours_30d; support_tickets_30d; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10821,0.1846,MEDIUM,support_tickets_30d; tenure_months; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10322,0.1834,MEDIUM,support_tickets_30d; last_login_days; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10531,0.1826,MEDIUM,usage_hours_30d; monthly_charges; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10351,0.1815,MEDIUM,satisfaction_score; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10170,0.1802,MEDIUM,monthly_charges; payment_method_Electronic check; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10428,0.1795,MEDIUM,support_tickets_30d; last_login_days; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10565,0.1792,MEDIUM,contract_type_Monthly; satisfaction_score; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10358,0.1791,MEDIUM,monthly_charges; usage_hours_30d; support_tickets_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10220,0.1787,MEDIUM,support_tickets_30d; tenure_months; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10543,0.1783,MEDIUM,satisfaction_score; tenure_months; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10018,0.1781,MEDIUM,monthly_charges; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10098,0.1777,MEDIUM,support_tickets_30d; last_login_days; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10563,0.1775,MEDIUM,last_login_days; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10256,0.1765,MEDIUM,satisfaction_score; usage_hours_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10308,0.1762,MEDIUM,satisfaction_score; usage_hours_30d; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10785,0.1761,MEDIUM,monthly_charges; contract_type_Monthly; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10730,0.1747,MEDIUM,support_tickets_30d; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10247,0.1747,MEDIUM,support_tickets_30d; contract_type_Monthly; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10581,0.1743,MEDIUM,contract_type_Monthly; last_login_days; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10734,0.1743,MEDIUM,support_tickets_30d; monthly_charges; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10467,0.1736,MEDIUM,support_tickets_30d; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10743,0.1735,MEDIUM,satisfaction_score; support_tickets_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10318,0.1728,MEDIUM,monthly_charges; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10576,0.1727,MEDIUM,support_tickets_30d; tenure_months; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10593,0.1712,MEDIUM,support_tickets_30d; contract_type_Monthly; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10385,0.1702,MEDIUM,support_tickets_30d; usage_hours_30d; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10983,0.1701,MEDIUM,contract_type_Monthly; tenure_months; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10149,0.1701,MEDIUM,satisfaction_score; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10513,0.1694,MEDIUM,monthly_charges; last_login_days; usage_hours_per_login,Logistic Regression,2026-10-17 15:09:17
+CUST10710,0.1692,MEDIUM,monthly_charges; tenure_months; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10269,0.1679,MEDIUM,satisfaction_score; contract_type_Monthly; usage_hours_per_login,Logistic Regression,2026-10-17 15:09:17
+CUST10260,0.1673,MEDIUM,monthly_charges; contract_type_Monthly; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10603,0.1669,MEDIUM,monthly_charges; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10939,0.1667,MEDIUM,satisfaction_score; contract_type_Monthly; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10711,0.1666,MEDIUM,monthly_charges; usage_hours_30d; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10264,0.1659,MEDIUM,usage_hours_30d; contract_type_Monthly; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10555,0.1631,MEDIUM,monthly_charges; support_friction_proxy; internet_service_Fiber optic,Logistic Regression,2026-10-17 15:09:17
+CUST10963,0.1628,MEDIUM,satisfaction_score; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10323,0.1626,MEDIUM,monthly_charges; usage_hours_30d; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10728,0.1625,MEDIUM,monthly_charges; support_friction_proxy; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10870,0.1624,MEDIUM,monthly_charges; satisfaction_score; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10135,0.1618,MEDIUM,last_login_days; tenure_months; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10010,0.1611,MEDIUM,satisfaction_score; tenure_months; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10376,0.1609,MEDIUM,support_tickets_30d; contract_type_Monthly; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10017,0.1607,MEDIUM,last_login_days; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10171,0.1605,MEDIUM,monthly_charges; support_tickets_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10578,0.1602,MEDIUM,satisfaction_score; monthly_charges; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10176,0.16,MEDIUM,contract_type_Monthly; usage_hours_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10904,0.1597,MEDIUM,satisfaction_score; support_friction_proxy; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10155,0.1592,MEDIUM,monthly_charges; usage_hours_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10261,0.1589,MEDIUM,monthly_charges; tenure_months; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10174,0.1585,MEDIUM,usage_hours_30d; contract_type_Monthly; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10984,0.1583,MEDIUM,usage_hours_30d; contract_type_Monthly; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10253,0.1582,MEDIUM,satisfaction_score; support_tickets_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10210,0.157,MEDIUM,contract_type_Monthly; monthly_charges; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10705,0.1565,MEDIUM,monthly_charges; support_tickets_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10647,0.1563,MEDIUM,satisfaction_score; usage_hours_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10411,0.1561,MEDIUM,support_tickets_30d; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10854,0.1561,MEDIUM,satisfaction_score; support_tickets_30d; usage_hours_per_login,Logistic Regression,2026-10-17 15:09:17
+CUST10954,0.1537,MEDIUM,support_tickets_30d; logins_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10504,0.1529,MEDIUM,support_tickets_30d; inactive_14d; internet_service_Fiber optic,Logistic Regression,2026-10-17 15:09:17
+CUST10364,0.1526,MEDIUM,contract_type_Monthly; tenure_months; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10795,0.1523,MEDIUM,last_login_days; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10249,0.152,MEDIUM,last_login_days; usage_hours_30d; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10524,0.1515,MEDIUM,monthly_charges; usage_hours_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10306,0.1513,MEDIUM,tenure_months; satisfaction_score; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10438,0.1507,MEDIUM,last_login_days; tenure_months; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10238,0.1499,MEDIUM,support_tickets_30d; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10285,0.1495,MEDIUM,monthly_charges; support_tickets_30d; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10741,0.1495,MEDIUM,contract_type_Monthly; satisfaction_score; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10950,0.1494,MEDIUM,support_tickets_30d; usage_hours_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10700,0.1492,MEDIUM,contract_type_Monthly; support_friction_proxy; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10195,0.148,MEDIUM,contract_type_Monthly; satisfaction_score; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10234,0.1472,MEDIUM,contract_type_Monthly; tenure_months; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10064,0.1471,MEDIUM,support_tickets_30d; contract_type_Monthly; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10444,0.1461,MEDIUM,support_tickets_30d; contract_type_Monthly; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10349,0.1461,MEDIUM,satisfaction_score; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10218,0.146,MEDIUM,satisfaction_score; support_tickets_30d; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10456,0.1449,MEDIUM,satisfaction_score; usage_hours_30d; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10227,0.1449,MEDIUM,support_tickets_30d; last_login_days; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10136,0.1444,MEDIUM,satisfaction_score; contract_type_Monthly; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10243,0.1439,MEDIUM,monthly_charges; support_friction_proxy; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10266,0.1437,MEDIUM,monthly_charges; support_friction_proxy; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10355,0.1435,MEDIUM,usage_hours_30d; tenure_months; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10514,0.1406,MEDIUM,monthly_charges; tenure_months; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10197,0.1403,MEDIUM,support_tickets_30d; tenure_months; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10561,0.1402,MEDIUM,tenure_months; satisfaction_score; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10501,0.1379,MEDIUM,support_tickets_30d; tenure_months; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10205,0.137,MEDIUM,monthly_charges; usage_hours_30d; internet_service_Fiber optic,Logistic Regression,2026-10-17 15:09:17
+CUST10455,0.137,MEDIUM,contract_type_Monthly; support_friction_proxy; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10012,0.1366,MEDIUM,satisfaction_score; last_login_days; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10424,0.1366,MEDIUM,tenure_months; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10343,0.1363,MEDIUM,usage_hours_30d; contract_type_Monthly; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10511,0.1358,MEDIUM,monthly_charges; usage_hours_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10175,0.1354,MEDIUM,satisfaction_score; support_tickets_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10517,0.1351,MEDIUM,support_tickets_30d; contract_type_Monthly; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10532,0.135,MEDIUM,support_tickets_30d; usage_hours_30d; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10767,0.1348,MEDIUM,satisfaction_score; support_tickets_30d; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10160,0.1347,MEDIUM,monthly_charges; support_tickets_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10102,0.1341,MEDIUM,satisfaction_score; support_friction_proxy; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10480,0.1341,MEDIUM,monthly_charges; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10991,0.1334,MEDIUM,satisfaction_score; monthly_charges; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10309,0.1328,MEDIUM,satisfaction_score; last_login_days; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10902,0.1326,MEDIUM,contract_type_Monthly; support_friction_proxy; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10111,0.1325,MEDIUM,contract_type_Monthly; last_login_days; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10418,0.1318,MEDIUM,contract_type_Monthly; support_friction_proxy; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10390,0.1313,MEDIUM,satisfaction_score; monthly_charges; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10482,0.131,MEDIUM,monthly_charges; logins_30d; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10255,0.1295,MEDIUM,support_tickets_30d; contract_type_Monthly; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10609,0.1293,MEDIUM,contract_type_Monthly; tenure_months; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10132,0.1291,MEDIUM,contract_type_Monthly; last_login_days; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10188,0.1286,MEDIUM,monthly_charges; support_tickets_30d; usage_hours_per_login,Logistic Regression,2026-10-17 15:09:17
+CUST10120,0.1283,MEDIUM,monthly_charges; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10233,0.1274,MEDIUM,monthly_charges; support_friction_proxy; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10398,0.1273,MEDIUM,support_tickets_30d; tenure_months; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10114,0.1269,MEDIUM,tenure_months; usage_hours_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10604,0.1269,MEDIUM,support_tickets_30d; contract_type_Monthly; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10011,0.1265,MEDIUM,support_tickets_30d; contract_type_Monthly; internet_service_Fiber optic,Logistic Regression,2026-10-17 15:09:17
+CUST10796,0.1263,MEDIUM,monthly_charges; support_friction_proxy; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10127,0.1263,MEDIUM,support_tickets_30d; logins_30d; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10660,0.1253,MEDIUM,monthly_charges; satisfaction_score; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10558,0.1252,MEDIUM,monthly_charges; contract_type_Monthly; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10724,0.1251,MEDIUM,support_tickets_30d; satisfaction_score; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10154,0.1249,LOW,usage_hours_30d; contract_type_Monthly; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10978,0.1248,LOW,contract_type_Monthly; last_login_days; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10518,0.1246,LOW,support_tickets_30d; inactive_14d; usage_hours_per_login,Logistic Regression,2026-10-17 15:09:17
+CUST10429,0.1239,LOW,contract_type_Monthly; support_friction_proxy; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10365,0.1234,LOW,support_tickets_30d; last_login_days; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10448,0.123,LOW,usage_hours_30d; monthly_charges; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10302,0.1228,LOW,contract_type_Monthly; usage_hours_30d; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10905,0.1226,LOW,contract_type_Monthly; satisfaction_score; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10307,0.1226,LOW,logins_30d; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10211,0.1224,LOW,support_tickets_30d; contract_type_Monthly; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10178,0.1221,LOW,support_tickets_30d; satisfaction_score; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10058,0.1221,LOW,usage_hours_30d; monthly_charges; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10955,0.1215,LOW,support_tickets_30d; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10970,0.1214,LOW,monthly_charges; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10076,0.1197,LOW,support_tickets_30d; usage_hours_30d; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10084,0.1194,LOW,monthly_charges; contract_type_Monthly; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10236,0.1186,LOW,support_tickets_30d; satisfaction_score; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10427,0.1185,LOW,monthly_charges; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10402,0.1182,LOW,monthly_charges; support_tickets_30d; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10804,0.1181,LOW,satisfaction_score; usage_hours_30d; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10772,0.1177,LOW,monthly_charges; logins_30d; usage_hours_per_login,Logistic Regression,2026-10-17 15:09:17
+CUST10681,0.1176,LOW,monthly_charges; last_login_days; usage_hours_per_login,Logistic Regression,2026-10-17 15:09:17
+CUST10814,0.1161,LOW,satisfaction_score; support_tickets_30d; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10329,0.1159,LOW,contract_type_Monthly; satisfaction_score; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10231,0.1154,LOW,satisfaction_score; support_friction_proxy; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10292,0.1151,LOW,monthly_charges; tenure_months; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10692,0.1148,LOW,support_tickets_30d; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10921,0.114,LOW,usage_hours_30d; monthly_charges; support_tickets_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10616,0.1137,LOW,last_login_days; usage_hours_30d; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10677,0.1133,LOW,support_tickets_30d; contract_type_Monthly; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10597,0.1132,LOW,monthly_charges; last_login_days; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10727,0.1129,LOW,contract_type_Monthly; satisfaction_score; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10844,0.1127,LOW,monthly_charges; last_login_days; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10490,0.1123,LOW,usage_hours_30d; monthly_charges; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10158,0.112,LOW,satisfaction_score; usage_hours_per_login; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10997,0.1118,LOW,monthly_charges; last_login_days; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10566,0.11,LOW,usage_hours_30d; monthly_charges; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10957,0.1092,LOW,monthly_charges; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10648,0.1082,LOW,usage_hours_30d; support_friction_proxy; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10474,0.1078,LOW,monthly_charges; support_friction_proxy; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10709,0.1075,LOW,contract_type_Monthly; support_friction_proxy; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10685,0.1073,LOW,monthly_charges; support_friction_proxy; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10004,0.1066,LOW,tenure_months; usage_hours_30d; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10850,0.1063,LOW,satisfaction_score; usage_hours_30d; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10113,0.1061,LOW,usage_hours_30d; tenure_months; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10244,0.1057,LOW,logins_30d; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10392,0.1054,LOW,monthly_charges; contract_type_Monthly; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10169,0.1044,LOW,contract_type_Monthly; support_friction_proxy; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10969,0.104,LOW,monthly_charges; usage_hours_30d; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10835,0.1038,LOW,contract_type_Monthly; support_friction_proxy; internet_service_Fiber optic,Logistic Regression,2026-10-17 15:09:17
+CUST10074,0.1033,LOW,tenure_months; last_login_days; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10676,0.1033,LOW,support_tickets_30d; inactive_14d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10391,0.1017,LOW,monthly_charges; usage_hours_per_login; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10464,0.1013,LOW,satisfaction_score; last_login_days; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10325,0.1013,LOW,last_login_days; satisfaction_score; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10145,0.1013,LOW,monthly_charges; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10034,0.1011,LOW,support_friction_proxy; payment_method_Electronic check; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10400,0.101,LOW,monthly_charges; usage_hours_30d; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10475,0.1009,LOW,contract_type_Monthly; usage_hours_30d; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10194,0.1007,LOW,support_tickets_30d; usage_hours_30d; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10239,0.0981,LOW,monthly_charges; support_friction_proxy; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10891,0.098,LOW,monthly_charges; payment_method_Electronic check; usage_hours_per_login,Logistic Regression,2026-10-17 15:09:17
+CUST10903,0.0973,LOW,support_tickets_30d; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10486,0.0971,LOW,support_tickets_30d; satisfaction_score; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10009,0.0955,LOW,monthly_charges; support_friction_proxy; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10133,0.0953,LOW,monthly_charges; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10723,0.0952,LOW,last_login_days; contract_type_Monthly; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10753,0.095,LOW,monthly_charges; support_friction_proxy; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10525,0.0948,LOW,satisfaction_score; monthly_charges; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10670,0.0941,LOW,support_tickets_30d; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10199,0.0941,LOW,monthly_charges; contract_type_One year; discount,Logistic Regression,2026-10-17 15:09:17
+CUST10932,0.094,LOW,monthly_charges; logins_30d; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10842,0.0936,LOW,monthly_charges; logins_30d; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10187,0.0935,LOW,support_friction_proxy; tenure_months; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10316,0.093,LOW,usage_hours_30d; logins_30d; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10150,0.0929,LOW,contract_type_Monthly; satisfaction_score; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10886,0.0927,LOW,usage_hours_30d; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10108,0.092,LOW,support_tickets_30d; last_login_days; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10610,0.0918,LOW,last_login_days; usage_hours_30d; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10906,0.0917,LOW,last_login_days; satisfaction_score; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10775,0.0915,LOW,usage_hours_30d; tenure_months; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10327,0.0912,LOW,support_tickets_30d; usage_hours_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10841,0.0906,LOW,contract_type_Monthly; last_login_days; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10368,0.0905,LOW,monthly_charges; support_friction_proxy; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10141,0.0896,LOW,satisfaction_score; support_friction_proxy; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10140,0.0894,LOW,logins_30d; support_friction_proxy; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10981,0.0892,LOW,contract_type_Monthly; monthly_charges; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10636,0.0883,LOW,usage_hours_30d; contract_type_Monthly; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10035,0.0875,LOW,satisfaction_score; support_friction_proxy; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10867,0.0874,LOW,contract_type_Monthly; satisfaction_score; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10982,0.0873,LOW,support_tickets_30d; usage_hours_30d; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10163,0.0865,LOW,support_tickets_30d; last_login_days; usage_hours_per_login,Logistic Regression,2026-10-17 15:09:17
+CUST10090,0.0865,LOW,monthly_charges; contract_type_Monthly; usage_hours_per_login,Logistic Regression,2026-10-17 15:09:17
+CUST10257,0.0865,LOW,satisfaction_score; tenure_months; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10523,0.0863,LOW,logins_30d; satisfaction_score; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10966,0.0858,LOW,usage_hours_30d; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10463,0.0855,LOW,support_friction_proxy; last_login_days; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10780,0.0854,LOW,monthly_charges; tenure_months; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10382,0.0854,LOW,monthly_charges; usage_hours_30d; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10801,0.0853,LOW,logins_30d; inactive_14d; internet_service_Fiber optic,Logistic Regression,2026-10-17 15:09:17
+CUST10833,0.0837,LOW,usage_hours_30d; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10414,0.0835,LOW,tenure_months; support_friction_proxy; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10896,0.0833,LOW,contract_type_Monthly; payment_method_Electronic check; internet_service_Fiber optic,Logistic Regression,2026-10-17 15:09:17
+CUST10183,0.0828,LOW,support_tickets_30d; last_login_days; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10458,0.0814,LOW,monthly_charges; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10207,0.0813,LOW,contract_type_Monthly; satisfaction_score; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10352,0.0811,LOW,last_login_days; inactive_14d; internet_service_Fiber optic,Logistic Regression,2026-10-17 15:09:17
+CUST10334,0.081,LOW,contract_type_Monthly; support_friction_proxy; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10499,0.0807,LOW,satisfaction_score; support_friction_proxy; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10409,0.0805,LOW,usage_hours_30d; tenure_months; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10070,0.0799,LOW,monthly_charges; support_friction_proxy; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10834,0.0797,LOW,satisfaction_score; contract_type_Monthly; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10095,0.0795,LOW,satisfaction_score; usage_hours_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10919,0.0787,LOW,usage_hours_30d; last_login_days; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10527,0.0783,LOW,contract_type_Monthly; support_friction_proxy; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10781,0.0777,LOW,support_friction_proxy; usage_hours_per_login; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10674,0.0775,LOW,contract_type_Monthly; logins_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10177,0.0773,LOW,usage_hours_30d; last_login_days; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10394,0.077,LOW,support_tickets_30d; logins_30d; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10082,0.0768,LOW,monthly_charges; usage_hours_per_login; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10819,0.0768,LOW,support_tickets_30d; contract_type_Monthly; contract_type_One year,Logistic Regression,2026-10-17 15:09:17
+CUST10332,0.0766,LOW,usage_hours_30d; support_friction_proxy; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10938,0.0764,LOW,monthly_charges; usage_hours_30d; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10053,0.0762,LOW,usage_hours_30d; logins_30d; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10441,0.0762,LOW,contract_type_Monthly; usage_hours_30d; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10755,0.0757,LOW,contract_type_Monthly; support_friction_proxy; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10036,0.0734,LOW,last_login_days; logins_30d; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10868,0.0733,LOW,support_tickets_30d; contract_type_Monthly; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10750,0.0731,LOW,support_friction_proxy; usage_hours_30d; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10360,0.073,LOW,monthly_charges; tenure_months; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10987,0.0725,LOW,usage_hours_30d; tenure_months; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10137,0.0725,LOW,support_tickets_30d; contract_type_Monthly; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10109,0.0721,LOW,contract_type_Monthly; support_friction_proxy; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10809,0.0713,LOW,contract_type_Monthly; inactive_14d; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10552,0.0705,LOW,support_tickets_30d; last_login_days; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10357,0.0704,LOW,contract_type_Monthly; satisfaction_score; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10087,0.0695,LOW,support_tickets_30d; logins_30d; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10736,0.0693,LOW,monthly_charges; support_friction_proxy; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10985,0.069,LOW,tenure_months; satisfaction_score; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10973,0.0678,LOW,support_tickets_30d; usage_hours_30d; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10071,0.0663,LOW,tenure_months; monthly_charges; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10246,0.066,LOW,monthly_charges; usage_hours_30d; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10585,0.0659,LOW,satisfaction_score; tenure_months; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10468,0.0653,LOW,last_login_days; tenure_months; satisfaction_score,Logistic Regression,2026-10-17 15:09:17
+CUST10526,0.0653,LOW,contract_type_Monthly; last_login_days; usage_hours_per_login,Logistic Regression,2026-10-17 15:09:17
+CUST10198,0.0652,LOW,logins_30d; last_login_days; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10297,0.0648,LOW,satisfaction_score; support_tickets_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10425,0.0646,LOW,contract_type_Monthly; support_friction_proxy; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10374,0.0645,LOW,monthly_charges; support_tickets_30d; usage_hours_per_login,Logistic Regression,2026-10-17 15:09:17
+CUST10067,0.0634,LOW,contract_type_Monthly; payment_method_Electronic check; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10063,0.0632,LOW,monthly_charges; support_friction_proxy; internet_service_Fiber optic,Logistic Regression,2026-10-17 15:09:17
+CUST10845,0.0619,LOW,support_tickets_30d; contract_type_Monthly; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10631,0.0615,LOW,tenure_months; payment_method_Electronic check; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10840,0.0614,LOW,tenure_months; support_friction_proxy; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10737,0.0614,LOW,support_tickets_30d; usage_hours_30d; contract_type_Monthly,Logistic Regression,2026-10-17 15:09:17
+CUST10832,0.0612,LOW,contract_type_Monthly; support_friction_proxy; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10630,0.0609,LOW,logins_30d; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10738,0.0606,LOW,last_login_days; payment_method_Electronic check; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10124,0.0605,LOW,contract_type_Monthly; support_friction_proxy; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10989,0.0605,LOW,monthly_charges; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10433,0.0598,LOW,monthly_charges; usage_hours_30d; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10046,0.0597,LOW,monthly_charges; support_tickets_30d; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10406,0.0594,LOW,satisfaction_score; support_friction_proxy; internet_service_Fiber optic,Logistic Regression,2026-10-17 15:09:17
+CUST10353,0.0594,LOW,monthly_charges; usage_hours_30d; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10293,0.0592,LOW,satisfaction_score; logins_30d; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10164,0.059,LOW,logins_30d; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10384,0.0587,LOW,tenure_months; logins_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10267,0.0586,LOW,usage_hours_30d; monthly_charges; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10816,0.0585,LOW,contract_type_Monthly; monthly_charges; usage_hours_per_login,Logistic Regression,2026-10-17 15:09:17
+CUST10990,0.0582,LOW,support_friction_proxy; usage_hours_per_login; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10222,0.0582,LOW,monthly_charges; last_login_days; usage_hours_per_login,Logistic Regression,2026-10-17 15:09:17
+CUST10029,0.0582,LOW,last_login_days; satisfaction_score; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10924,0.0578,LOW,monthly_charges; logins_30d; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10328,0.0578,LOW,support_tickets_30d; logins_30d; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10703,0.0575,LOW,monthly_charges; contract_type_Monthly; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10757,0.0573,LOW,monthly_charges; logins_30d; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10756,0.0573,LOW,support_tickets_30d; monthly_charges; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10803,0.0569,LOW,support_tickets_30d; tenure_months; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10423,0.0568,LOW,usage_hours_30d; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10806,0.0562,LOW,support_tickets_30d; usage_hours_30d; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10290,0.055,LOW,usage_hours_30d; support_friction_proxy; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10442,0.0538,LOW,usage_hours_30d; support_friction_proxy; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10300,0.0536,LOW,usage_hours_30d; contract_type_Monthly; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10615,0.0536,LOW,logins_30d; inactive_14d; contract_type_One year,Logistic Regression,2026-10-17 15:09:17
+CUST10134,0.0535,LOW,support_tickets_30d; contract_type_Monthly; usage_hours_per_login,Logistic Regression,2026-10-17 15:09:17
+CUST10338,0.0535,LOW,satisfaction_score; inactive_14d; discount,Logistic Regression,2026-10-17 15:09:17
+CUST10758,0.0535,LOW,contract_type_Monthly; support_friction_proxy; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10092,0.0531,LOW,satisfaction_score; usage_hours_per_login; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10453,0.0531,LOW,last_login_days; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10971,0.0528,LOW,support_friction_proxy; last_login_days; usage_hours_per_login,Logistic Regression,2026-10-17 15:09:17
+CUST10086,0.0527,LOW,contract_type_Monthly; logins_30d; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10812,0.0525,LOW,support_tickets_30d; tenure_months; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10572,0.0523,LOW,support_tickets_30d; tenure_months; usage_hours_per_login,Logistic Regression,2026-10-17 15:09:17
+CUST10542,0.0522,LOW,usage_hours_30d; inactive_14d; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10544,0.0522,LOW,support_tickets_30d; satisfaction_score; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10008,0.0514,LOW,monthly_charges; usage_hours_per_login; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10206,0.0507,LOW,last_login_days; contract_type_Monthly; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10129,0.0495,LOW,contract_type_Monthly; usage_hours_30d; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10649,0.0494,LOW,support_friction_proxy; logins_30d; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10554,0.0486,LOW,usage_hours_30d; logins_30d; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10192,0.0485,LOW,usage_hours_30d; last_login_days; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10415,0.0483,LOW,tenure_months; support_friction_proxy; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10652,0.0482,LOW,contract_type_Monthly; usage_hours_30d; contract_type_One year,Logistic Regression,2026-10-17 15:09:17
+CUST10276,0.0471,LOW,contract_type_Monthly; support_friction_proxy; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10375,0.047,LOW,contract_type_Monthly; last_login_days; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10539,0.0469,LOW,support_tickets_30d; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10219,0.0467,LOW,monthly_charges; tenure_months; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10658,0.0467,LOW,contract_type_Monthly; support_friction_proxy; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10550,0.0464,LOW,logins_30d; last_login_days; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10489,0.0454,LOW,last_login_days; logins_30d; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10617,0.0453,LOW,contract_type_Monthly; support_friction_proxy; internet_service_Fiber optic,Logistic Regression,2026-10-17 15:09:17
+CUST10698,0.0451,LOW,support_tickets_30d; usage_hours_per_login; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10519,0.0447,LOW,support_friction_proxy; inactive_14d; internet_service_Fiber optic,Logistic Regression,2026-10-17 15:09:17
+CUST10225,0.0441,LOW,contract_type_Monthly; logins_30d; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10262,0.044,LOW,satisfaction_score; tenure_months; contract_type_One year,Logistic Regression,2026-10-17 15:09:17
+CUST10162,0.0437,LOW,satisfaction_score; usage_hours_per_login; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10047,0.0436,LOW,usage_hours_30d; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10013,0.0435,LOW,support_tickets_30d; inactive_14d; internet_service_Fiber optic,Logistic Regression,2026-10-17 15:09:17
+CUST10911,0.043,LOW,usage_hours_30d; logins_30d; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10686,0.043,LOW,monthly_charges; support_friction_proxy; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10421,0.0428,LOW,satisfaction_score; usage_hours_per_login; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10121,0.0425,LOW,monthly_charges; logins_30d; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10545,0.0422,LOW,satisfaction_score; usage_hours_30d; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10852,0.0415,LOW,satisfaction_score; usage_hours_30d; internet_service_Fiber optic,Logistic Regression,2026-10-17 15:09:17
+CUST10595,0.0414,LOW,monthly_charges; support_friction_proxy; internet_service_Fiber optic,Logistic Regression,2026-10-17 15:09:17
+CUST10465,0.0414,LOW,support_friction_proxy; inactive_14d; contract_type_One year,Logistic Regression,2026-10-17 15:09:17
+CUST10432,0.0412,LOW,support_tickets_30d; tenure_months; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10521,0.041,LOW,usage_hours_30d; logins_30d; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10596,0.041,LOW,contract_type_Monthly; logins_30d; internet_service_Fiber optic,Logistic Regression,2026-10-17 15:09:17
+CUST10397,0.0404,LOW,satisfaction_score; contract_type_One year; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10281,0.0403,LOW,usage_hours_30d; support_friction_proxy; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10123,0.04,LOW,support_tickets_30d; contract_type_Monthly; internet_service_Fiber optic,Logistic Regression,2026-10-17 15:09:17
+CUST10535,0.0398,LOW,usage_hours_30d; logins_30d; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10642,0.0398,LOW,contract_type_Monthly; usage_hours_per_login; internet_service_Fiber optic,Logistic Regression,2026-10-17 15:09:17
+CUST10672,0.0388,LOW,usage_hours_30d; last_login_days; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10457,0.0386,LOW,tenure_months; contract_type_Monthly; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10144,0.0386,LOW,contract_type_Monthly; usage_hours_30d; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10675,0.0384,LOW,contract_type_Monthly; support_friction_proxy; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10866,0.0378,LOW,support_tickets_30d; tenure_months; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10759,0.0374,LOW,usage_hours_30d; support_friction_proxy; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10895,0.0373,LOW,monthly_charges; support_tickets_30d; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10877,0.0369,LOW,monthly_charges; tenure_months; discount,Logistic Regression,2026-10-17 15:09:17
+CUST10779,0.0356,LOW,satisfaction_score; tenure_months; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10413,0.0354,LOW,tenure_months; usage_hours_30d; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10591,0.0351,LOW,contract_type_Monthly; support_friction_proxy; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10117,0.0351,LOW,usage_hours_30d; last_login_days; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10509,0.0344,LOW,last_login_days; support_friction_proxy; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10662,0.0344,LOW,monthly_charges; usage_hours_30d; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10887,0.0343,LOW,tenure_months; support_friction_proxy; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10051,0.0342,LOW,support_friction_proxy; usage_hours_per_login; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10367,0.0342,LOW,support_tickets_30d; logins_30d; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10347,0.0342,LOW,support_friction_proxy; monthly_charges; internet_service_Fiber optic,Logistic Regression,2026-10-17 15:09:17
+CUST10055,0.0342,LOW,support_friction_proxy; logins_30d; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10659,0.0342,LOW,satisfaction_score; usage_hours_30d; internet_service_Fiber optic,Logistic Regression,2026-10-17 15:09:17
+CUST10213,0.034,LOW,monthly_charges; tenure_months; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10044,0.0339,LOW,support_friction_proxy; tenure_months; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10492,0.0334,LOW,satisfaction_score; support_friction_proxy; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10420,0.0328,LOW,tenure_months; usage_hours_per_login; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10752,0.0327,LOW,tenure_months; usage_hours_per_login; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10907,0.032,LOW,monthly_charges; support_friction_proxy; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10944,0.032,LOW,logins_30d; payment_method_Electronic check; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10811,0.0312,LOW,support_tickets_30d; usage_hours_30d; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10602,0.0309,LOW,contract_type_Monthly; support_friction_proxy; last_login_days,Logistic Regression,2026-10-17 15:09:17
+CUST10410,0.0304,LOW,contract_type_Monthly; last_login_days; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10818,0.0302,LOW,usage_hours_30d; contract_type_Monthly; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10942,0.0299,LOW,last_login_days; usage_hours_per_login; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10530,0.0295,LOW,monthly_charges; inactive_14d; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10575,0.0288,LOW,usage_hours_30d; support_friction_proxy; contract_type_One year,Logistic Regression,2026-10-17 15:09:17
+CUST10208,0.0288,LOW,support_tickets_30d; logins_30d; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10913,0.0279,LOW,support_tickets_30d; logins_30d; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10776,0.027,LOW,contract_type_Monthly; usage_hours_30d; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10980,0.0261,LOW,support_tickets_30d; last_login_days; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10684,0.0258,LOW,support_tickets_30d; last_login_days; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10119,0.0257,LOW,support_tickets_30d; tenure_months; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10878,0.0251,LOW,usage_hours_30d; logins_30d; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10537,0.0251,LOW,satisfaction_score; usage_hours_30d; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10559,0.025,LOW,usage_hours_30d; support_friction_proxy; internet_service_Fiber optic,Logistic Regression,2026-10-17 15:09:17
+CUST10625,0.0247,LOW,usage_hours_per_login; internet_service_Fiber optic; contract_type_Two year,Logistic Regression,2026-10-17 15:09:17
+CUST10893,0.0246,LOW,support_tickets_30d; logins_30d; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10680,0.0244,LOW,support_friction_proxy; tenure_months; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10396,0.0239,LOW,usage_hours_30d; support_friction_proxy; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10706,0.0234,LOW,logins_30d; payment_method_Electronic check; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10786,0.0233,LOW,tenure_months; contract_type_One year; monthly_charges,Logistic Regression,2026-10-17 15:09:17
+CUST10350,0.0223,LOW,inactive_14d; internet_service_Fiber optic; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10277,0.0219,LOW,usage_hours_30d; logins_30d; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10725,0.0214,LOW,support_tickets_30d; logins_30d; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10422,0.0205,LOW,last_login_days; inactive_14d; internet_service_Fiber optic,Logistic Regression,2026-10-17 15:09:17
+CUST10481,0.0204,LOW,usage_hours_30d; support_friction_proxy; discount,Logistic Regression,2026-10-17 15:09:17
+CUST10696,0.0202,LOW,support_tickets_30d; last_login_days; usage_hours_per_login,Logistic Regression,2026-10-17 15:09:17
+CUST10436,0.0201,LOW,monthly_charges; usage_hours_per_login; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10094,0.02,LOW,usage_hours_30d; support_friction_proxy; payment_method_Electronic check,Logistic Regression,2026-10-17 15:09:17
+CUST10839,0.0196,LOW,tenure_months; support_friction_proxy; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10994,0.0194,LOW,usage_hours_per_login; inactive_14d; contract_type_Two year,Logistic Regression,2026-10-17 15:09:17
+CUST10712,0.0193,LOW,tenure_months; support_friction_proxy; usage_hours_per_login,Logistic Regression,2026-10-17 15:09:17
+CUST10873,0.0192,LOW,support_friction_proxy; payment_method_Electronic check; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10949,0.0192,LOW,support_friction_proxy; payment_method_Electronic check; usage_hours_per_login,Logistic Regression,2026-10-17 15:09:17
+CUST10229,0.0192,LOW,monthly_charges; support_friction_proxy; contract_type_One year,Logistic Regression,2026-10-17 15:09:17
+CUST10485,0.0189,LOW,support_tickets_30d; last_login_days; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10815,0.0189,LOW,usage_hours_30d; tenure_months; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10156,0.0186,LOW,contract_type_Monthly; support_friction_proxy; usage_hours_per_login,Logistic Regression,2026-10-17 15:09:17
+CUST10663,0.0186,LOW,logins_30d; support_friction_proxy; usage_hours_per_login,Logistic Regression,2026-10-17 15:09:17
+CUST10389,0.0178,LOW,support_friction_proxy; last_login_days; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10977,0.0178,LOW,payment_method_Electronic check; inactive_14d; internet_service_Fiber optic,Logistic Regression,2026-10-17 15:09:17
+CUST10089,0.0176,LOW,tenure_months; payment_method_Electronic check; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10797,0.0173,LOW,usage_hours_30d; support_friction_proxy; contract_type_One year,Logistic Regression,2026-10-17 15:09:17
+CUST10280,0.0173,LOW,support_tickets_30d; inactive_14d; usage_hours_per_login,Logistic Regression,2026-10-17 15:09:17
+CUST10574,0.0167,LOW,usage_hours_30d; last_login_days; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10865,0.0165,LOW,contract_type_Monthly; support_friction_proxy; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10383,0.0164,LOW,last_login_days; support_friction_proxy; usage_hours_per_login,Logistic Regression,2026-10-17 15:09:17
+CUST10766,0.0162,LOW,support_tickets_30d; logins_30d; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10689,0.0159,LOW,inactive_14d; discount; contract_type_Two year,Logistic Regression,2026-10-17 15:09:17
+CUST10031,0.0153,LOW,support_friction_proxy; internet_service_Fiber optic; discount,Logistic Regression,2026-10-17 15:09:17
+CUST10654,0.0151,LOW,support_friction_proxy; logins_30d; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10073,0.0151,LOW,contract_type_Monthly; usage_hours_per_login; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10808,0.0149,LOW,usage_hours_30d; logins_30d; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10869,0.0142,LOW,support_friction_proxy; internet_service_Fiber optic; contract_type_One year,Logistic Regression,2026-10-17 15:09:17
+CUST10885,0.014,LOW,last_login_days; support_friction_proxy; tenure_months,Logistic Regression,2026-10-17 15:09:17
+CUST10478,0.0134,LOW,monthly_charges; support_friction_proxy; usage_hours_per_login,Logistic Regression,2026-10-17 15:09:17
+CUST10733,0.0128,LOW,tenure_months; usage_hours_per_login; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10720,0.0118,LOW,support_tickets_30d; last_login_days; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10186,0.0115,LOW,last_login_days; support_friction_proxy; usage_hours_per_login,Logistic Regression,2026-10-17 15:09:17
+CUST10237,0.011,LOW,contract_type_Monthly; support_friction_proxy; contract_type_One year,Logistic Regression,2026-10-17 15:09:17
+CUST10215,0.0108,LOW,usage_hours_per_login; internet_service_Fiber optic; discount,Logistic Regression,2026-10-17 15:09:17
+CUST10491,0.0107,LOW,contract_type_Monthly; payment_method_Electronic check; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10077,0.01,LOW,support_tickets_30d; discount; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10770,0.0097,LOW,usage_hours_30d; support_friction_proxy; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10943,0.0096,LOW,usage_hours_30d; support_friction_proxy; inactive_14d,Logistic Regression,2026-10-17 15:09:17
+CUST10732,0.0093,LOW,support_friction_proxy; tenure_months; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10799,0.0091,LOW,support_friction_proxy; internet_service_Fiber optic; discount,Logistic Regression,2026-10-17 15:09:17
+CUST10778,0.008,LOW,usage_hours_per_login; discount; support_friction_proxy,Logistic Regression,2026-10-17 15:09:17
+CUST10212,0.0066,LOW,usage_hours_30d; internet_service_Fiber optic; logins_30d,Logistic Regression,2026-10-17 15:09:17
+CUST10829,0.0053,LOW,support_friction_proxy; tenure_months; usage_hours_30d,Logistic Regression,2026-10-17 15:09:17
