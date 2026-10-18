@@ -25,3 +25,17 @@ Thumbs.db
 
 # Temporary files
 *.log
+
+# Local feature-store database and generated runtime files
+data/feature_store/*.sqlite
+data/feature_store/*.db
+data/feature_store/*.sqlite3
+data/batch_scores.csv
+data/batch_scoring_log.csv
+
+# Local Python script backups
+*.py.bak
+# Regenerable synthetic history and detailed cohort output
+data/customer_monthly_history_demo.csv
+data/customer_history_demo.csv
+data/acquisition_cohorts/acquisition_cohort_retention_long.csv
